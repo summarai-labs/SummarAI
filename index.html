@@ -83,93 +83,7 @@ textarea:focus{border-color:var(--acc)}
 .tp strong{color:var(--txt);display:block;margin-bottom:6px;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
 .row{display:flex;gap:10px;flex-wrap:wrap}
 </style>
-</head>
-<body>
-<div class="app">
-  <header>
-    <div class="logo">Summar<span>AI</span></div>
-    <div class="bdg">Study Tool</div>
-  </header>
-  <div class="steps">
-    <div class="step active" id="si1"><div class="snum">1</div><span>Load Text</span></div>
-    <div class="scon"></div>
-    <div class="step" id="si2"><div class="snum">2</div><span>Summarize</span></div>
-    <div class="scon"></div>
-    <div class="step" id="si3"><div class="snum">3</div><span>Feedback</span></div>
-    <div class="scon"></div>
-    <div class="step" id="si4"><div class="snum">4</div><span>Quiz</span></div>
-  </div>
-
-  <div class="panel active" id="p1">
-    <div class="card">
-      <div class="ct">Load your text</div>
-      <div class="cs">Paste a passage or upload a plain text file to get started.</div>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab(0)">Paste Text</button>
-        <button class="tab" onclick="switchTab(1)">Upload PDF</button>
-      </div>
-      <div id="tp0">
-        <textarea id="pin" placeholder="Paste an article, chapter, or any passage here..." oninput="onPaste()"></textarea>
-        <div class="cc"><span id="cc">0</span> characters</div>
-      </div>
-      <div id="tp1" style="display:none">
-        <div class="dz" id="dz" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="onDrop(event)">
-          <input type="file" accept=".pdf" onchange="onPick(event)">
-          <div style="font-size:36px;margin-bottom:10px">&#128196;</div>
-          <div style="color:var(--mut);font-size:14px"><strong style="color:var(--txt)">Drop a PDF file</strong> or click to browse</div>
-        </div>
-        <div id="finfo" style="display:none"></div>
-      </div>
-      <div id="p1err" class="err" style="display:none"></div>
-      <div style="margin-top:20px">
-        <button class="btn bp" id="btn1" onclick="goStep2()" disabled>Continue to Summarize &#8594;</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel" id="p2">
-    <div class="card">
-      <div class="ct">Read &amp; Summarize</div>
-      <div class="cs">Read the passage below, then write your summary in your own words.</div>
-      <div class="tp"><strong>Source Text</strong><span id="src-prev"></span></div>
-      <label style="font-size:13px;color:var(--mut);font-weight:500;display:block;margin-bottom:8px">Your Summary</label>
-      <textarea id="usum" placeholder="Write the main ideas, key points, and important details..." style="min-height:200px" oninput="onSum()"></textarea>
-      <div class="cc"><span id="sc">0</span> characters</div>
-      <div id="sumerr" class="err" style="display:none">Please write at least 80 characters before getting feedback.</div>
-      <div class="row" style="margin-top:20px">
-        <button class="btn bg" onclick="goPanel(1)">&#8592; Back</button>
-        <button class="btn bp" id="btnfb" onclick="getFeedback()" disabled>Get AI Feedback &#8594;</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel" id="p3">
-    <div class="card">
-      <div class="ct">AI Feedback</div>
-      <div class="cs">Here is a detailed breakdown of your summary.</div>
-      <div id="fbload" class="ld"><div class="sp"></div> Analyzing your summary&#8230;</div>
-      <div id="fbcontent" style="display:none"></div>
-      <div id="fbactions" class="row" style="display:none;margin-top:24px">
-        <button class="btn bg" onclick="goPanel(2)">&#8592; Revise Summary</button>
-        <button class="btn bp" onclick="startQuiz()">Take the Quiz &#8594;</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel" id="p4">
-    <div class="card">
-      <div class="ct">Knowledge Quiz</div>
-      <div class="cs">Answer questions about the text to test your comprehension.</div>
-      <div id="qzload" class="ld"><div class="sp"></div> Generating quiz&#8230;</div>
-      <div id="qzcontent" style="display:none"></div>
-      <div id="qzactions" class="row" style="display:none;margin-top:20px">
-        <button class="btn bp" id="btnsub" onclick="submitQuiz()">Submit Quiz &#8594;</button>
-      </div>
-    </div>
-    <div id="result"></div>
-  </div>
-</div>
-<script>
+<script defer>
 var src = '', fbScore = 0, quizData = [], activeTab = 0;
 
 function switchTab(n) {
@@ -450,13 +364,97 @@ goPanel(1);
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo">Summar<span>AI</span></div>
+    <div class="bdg">Study Tool</div>
+  </header>
+  <div class="steps">
+    <div class="step active" id="si1"><div class="snum">1</div><span>Load Text</span></div>
+    <div class="scon"></div>
+    <div class="step" id="si2"><div class="snum">2</div><span>Summarize</span></div>
+    <div class="scon"></div>
+    <div class="step" id="si3"><div class="snum">3</div><span>Feedback</span></div>
+    <div class="scon"></div>
+    <div class="step" id="si4"><div class="snum">4</div><span>Quiz</span></div>
+  </div>
 
+  <div class="panel active" id="p1">
+    <div class="card">
+      <div class="ct">Load your text</div>
+      <div class="cs">Paste a passage or upload a plain text file to get started.</div>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab(0)">Paste Text</button>
+        <button class="tab" onclick="switchTab(1)">Upload PDF</button>
+      </div>
+      <div id="tp0">
+        <textarea id="pin" placeholder="Paste an article, chapter, or any passage here..." oninput="onPaste()"></textarea>
+        <div class="cc"><span id="cc">0</span> characters</div>
+      </div>
+      <div id="tp1" style="display:none">
+        <div class="dz" id="dz" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="onDrop(event)">
+          <input type="file" accept=".pdf" onchange="onPick(event)">
+          <div style="font-size:36px;margin-bottom:10px">&#128196;</div>
+          <div style="color:var(--mut);font-size:14px"><strong style="color:var(--txt)">Drop a PDF file</strong> or click to browse</div>
+        </div>
+        <div id="finfo" style="display:none"></div>
+      </div>
+      <div id="p1err" class="err" style="display:none"></div>
+      <div style="margin-top:20px">
+        <button class="btn bp" id="btn1" onclick="goStep2()" disabled>Continue to Summarize &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="p2">
+    <div class="card">
+      <div class="ct">Read &amp; Summarize</div>
+      <div class="cs">Read the passage below, then write your summary in your own words.</div>
+      <div class="tp"><strong>Source Text</strong><span id="src-prev"></span></div>
+      <label style="font-size:13px;color:var(--mut);font-weight:500;display:block;margin-bottom:8px">Your Summary</label>
+      <textarea id="usum" placeholder="Write the main ideas, key points, and important details..." style="min-height:200px" oninput="onSum()"></textarea>
+      <div class="cc"><span id="sc">0</span> characters</div>
+      <div id="sumerr" class="err" style="display:none">Please write at least 80 characters before getting feedback.</div>
+      <div class="row" style="margin-top:20px">
+        <button class="btn bg" onclick="goPanel(1)">&#8592; Back</button>
+        <button class="btn bp" id="btnfb" onclick="getFeedback()" disabled>Get AI Feedback &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="p3">
+    <div class="card">
+      <div class="ct">AI Feedback</div>
+      <div class="cs">Here is a detailed breakdown of your summary.</div>
+      <div id="fbload" class="ld"><div class="sp"></div> Analyzing your summary&#8230;</div>
+      <div id="fbcontent" style="display:none"></div>
+      <div id="fbactions" class="row" style="display:none;margin-top:24px">
+        <button class="btn bg" onclick="goPanel(2)">&#8592; Revise Summary</button>
+        <button class="btn bp" onclick="startQuiz()">Take the Quiz &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="p4">
+    <div class="card">
+      <div class="ct">Knowledge Quiz</div>
+      <div class="cs">Answer questions about the text to test your comprehension.</div>
+      <div id="qzload" class="ld"><div class="sp"></div> Generating quiz&#8230;</div>
+      <div id="qzcontent" style="display:none"></div>
+      <div id="qzactions" class="row" style="display:none;margin-top:20px">
+        <button class="btn bp" id="btnsub" onclick="submitQuiz()">Submit Quiz &#8594;</button>
+      </div>
+    </div>
+    <div id="result"></div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
 <script>
 if (typeof pdfjsLib !== 'undefined') {
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
 }
 </script>
-
 </body>
 </html>
