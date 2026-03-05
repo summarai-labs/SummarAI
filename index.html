@@ -240,7 +240,7 @@ async function readPDF(file) {
 async function callClaude(prompt, maxTok) {
   var res = await fetch('https://bananaman-mrnibls-summarai-proxy.hf.space', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: maxTok || 1000, messages: [{ role: 'user', content: prompt }] })
   });
   var d = await res.json();
