@@ -244,6 +244,9 @@ async function callClaude(prompt, maxTok) {
     body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: maxTok || 1000, messages: [{ role: 'user', content: prompt }] })
   });
   var d = await res.json();
+  if (!d.content) {
+    throw new Error('API error: ' + JSON.stringify(d));
+  }
   return d.content.map(function(b) { return b.text || ''; }).join('').replace(/```json/g, '').replace(/```/g, '').trim();
 }
 
