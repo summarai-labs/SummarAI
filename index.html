@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,169 +7,406 @@
 <title>SummarAI</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0d0f;--sur:#16161a;--s2:#1e1e24;--bor:#2a2a35;--acc:#c8f060;--ac2:#60b8f0;--ac3:#f060b8;--txt:#f0f0f5;--mut:#888899;--dan:#f06060;--ok:#60f0a8}
+
+:root{–bg:#0d0d0f;–sur:#16161a;–s2:#1e1e24;–bor:#2a2a35;–acc:#c8f060;–ac2:#60b8f0;–ac3:#f060b8;–txt:#f0f0f5;–mut:#888899;–dan:#f06060;–ok:#60f0a8}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.65;min-height:100vh}
+body{background:var(–bg);color:var(–txt);font-family:“DM Sans”,sans-serif;font-size:15px;line-height:1.65;min-height:100vh}
 .app{max-width:860px;margin:0 auto;padding:40px 24px 80px}
 header{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px}
-.logo{font-family:"Syne",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px}
-.logo span{color:var(--acc)}
-.bdg{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);border:1px solid var(--bor);padding:4px 12px;border-radius:100px}
+.logo{font-family:“Syne”,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px}
+.logo span{color:var(–acc)}
+.bdg{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(–mut);border:1px solid var(–bor);padding:4px 12px;border-radius:100px}
 .steps{display:flex;align-items:center;margin-bottom:40px}
-.step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);transition:color .3s}
-.step.active{color:var(--txt)}.step.done{color:var(--acc)}
-.snum{width:28px;height:28px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:700;font-size:12px;flex-shrink:0}
-.step.active .snum,.step.done .snum{background:var(--acc);border-color:var(--acc);color:#000}
-.scon{flex:1;height:1px;background:var(--bor);margin:0 10px;max-width:80px}
-.card{background:var(--sur);border:1px solid var(--bor);border-radius:16px;padding:32px;margin-bottom:20px}
-.ct{font-family:"Syne",sans-serif;font-weight:700;font-size:18px;margin-bottom:6px}
-.cs{color:var(--mut);font-size:13.5px;margin-bottom:24px}
-.tabs{display:flex;gap:4px;background:var(--s2);border-radius:10px;padding:4px;margin-bottom:20px}
-.tab{padding:7px 18px;border-radius:7px;font-size:13.5px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--mut);transition:all .2s;font-family:"DM Sans",sans-serif}
-.tab.active{background:var(--sur);color:var(--txt);box-shadow:0 1px 4px rgba(0,0,0,.4)}
-textarea{width:100%;background:var(--s2);border:1px solid var(--bor);border-radius:10px;color:var(--txt);font-family:"DM Sans",sans-serif;font-size:14.5px;line-height:1.7;padding:14px 16px;resize:vertical;outline:none;transition:border-color .2s;min-height:180px}
-textarea:focus{border-color:var(--acc)}
-.dz{border:2px dashed var(--bor);border-radius:12px;padding:40px 20px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
-.dz:hover,.dz.drag{border-color:var(--acc);background:rgba(200,240,96,.04)}
+.step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(–mut);transition:color .3s}
+.step.active{color:var(–txt)}.step.done{color:var(–acc)}
+.snum{width:28px;height:28px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-family:“Syne”,sans-serif;font-weight:700;font-size:12px;flex-shrink:0}
+.step.active .snum,.step.done .snum{background:var(–acc);border-color:var(–acc);color:#000}
+.scon{flex:1;height:1px;background:var(–bor);margin:0 10px;max-width:80px}
+.card{background:var(–sur);border:1px solid var(–bor);border-radius:16px;padding:32px;margin-bottom:20px}
+.ct{font-family:“Syne”,sans-serif;font-weight:700;font-size:18px;margin-bottom:6px}
+.cs{color:var(–mut);font-size:13.5px;margin-bottom:24px}
+.tabs{display:flex;gap:4px;background:var(–s2);border-radius:10px;padding:4px;margin-bottom:20px}
+.tab{padding:7px 18px;border-radius:7px;font-size:13.5px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(–mut);transition:all .2s;font-family:“DM Sans”,sans-serif}
+.tab.active{background:var(–sur);color:var(–txt);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+textarea{width:100%;background:var(–s2);border:1px solid var(–bor);border-radius:10px;color:var(–txt);font-family:“DM Sans”,sans-serif;font-size:14.5px;line-height:1.7;padding:14px 16px;resize:vertical;outline:none;transition:border-color .2s;min-height:180px}
+textarea:focus{border-color:var(–acc)}
+.dz{border:2px dashed var(–bor);border-radius:12px;padding:40px 20px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.dz:hover,.dz.drag{border-color:var(–acc);background:rgba(200,240,96,.04)}
 .dz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.fbox{display:flex;align-items:center;gap:12px;background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:14px 16px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:14.5px;font-weight:500;cursor:pointer;border:none;transition:all .2s}
-.bp{background:var(--acc);color:#000}
+.fbox{display:flex;align-items:center;gap:12px;background:var(–s2);border:1px solid var(–bor);border-radius:10px;padding:14px 16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;font-family:“DM Sans”,sans-serif;font-size:14.5px;font-weight:500;cursor:pointer;border:none;transition:all .2s}
+.bp{background:var(–acc);color:#000}
 .bp:hover:not(:disabled){background:#d8ff70;transform:translateY(-1px)}
 .bp:disabled{opacity:.4;cursor:not-allowed}
-.bs{background:var(--s2);color:var(--txt);border:1px solid var(--bor)}.bs:hover{background:var(--bor)}
-.bg{background:transparent;color:var(--mut);border:1px solid var(--bor)}.bg:hover{color:var(--txt)}
-.ld{display:flex;align-items:center;gap:12px;color:var(--mut);font-size:14px;padding:16px 0}
-.sp{width:20px;height:20px;border:2px solid var(--bor);border-top-color:var(--acc);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+.bs{background:var(–s2);color:var(–txt);border:1px solid var(–bor)}.bs:hover{background:var(–bor)}
+.bg{background:transparent;color:var(–mut);border:1px solid var(–bor)}.bg:hover{color:var(–txt)}
+.ld{display:flex;align-items:center;gap:12px;color:var(–mut);font-size:14px;padding:16px 0}
+.sp{width:20px;height:20px;border:2px solid var(–bor);border-top-color:var(–acc);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.fbb{background:var(--s2);border-radius:12px;padding:20px;margin-bottom:16px;border-left:3px solid var(--bor)}
-.fbb.pos{border-left-color:var(--ok)}.fbb.imp{border-left-color:var(--ac2)}.fbb.mis{border-left-color:var(--ac3)}
+.fbb{background:var(–s2);border-radius:12px;padding:20px;margin-bottom:16px;border-left:3px solid var(–bor)}
+.fbb.pos{border-left-color:var(–ok)}.fbb.imp{border-left-color:var(–ac2)}.fbb.mis{border-left-color:var(–ac3)}
 .fblb{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
-.fbb.pos .fblb{color:var(--ok)}.fbb.imp .fblb{color:var(--ac2)}.fbb.mis .fblb{color:var(--ac3)}
+.fbb.pos .fblb{color:var(–ok)}.fbb.imp .fblb{color:var(–ac2)}.fbb.mis .fblb{color:var(–ac3)}
 .fbb p{font-size:14px;line-height:1.65}
 .rw{display:flex;flex-direction:column;align-items:center;margin:0 auto 24px}
 .ring{position:relative;width:110px;height:110px}
 .ring svg{transform:rotate(-90deg)}
-.rt{fill:none;stroke:var(--s2);stroke-width:8}
+.rt{fill:none;stroke:var(–s2);stroke-width:8}
 .rf{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1s ease}
 .rtx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.rn{font-family:"Syne",sans-serif;font-weight:800;font-size:28px;line-height:1}
-.rlb{font-size:11px;color:var(--mut)}
-.qq{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:22px;margin-bottom:16px}
-.qn{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+.rn{font-family:“Syne”,sans-serif;font-weight:800;font-size:28px;line-height:1}
+.rlb{font-size:11px;color:var(–mut)}
+.qq{background:var(–s2);border:1px solid var(–bor);border-radius:12px;padding:22px;margin-bottom:16px}
+.qn{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(–acc);margin-bottom:8px}
 .qt{font-size:15px;font-weight:500;margin-bottom:16px}
 .opts{display:flex;flex-direction:column;gap:8px}
-.opt{display:flex;align-items:flex-start;gap:10px;background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:11px 14px;cursor:pointer;font-size:14px;transition:all .18s;text-align:left;color:var(--txt);font-family:"DM Sans",sans-serif;width:100%}
-.opt:hover:not(:disabled){border-color:var(--acc);background:rgba(200,240,96,.05)}
+.opt{display:flex;align-items:flex-start;gap:10px;background:var(–sur);border:1px solid var(–bor);border-radius:8px;padding:11px 14px;cursor:pointer;font-size:14px;transition:all .18s;text-align:left;color:var(–txt);font-family:“DM Sans”,sans-serif;width:100%}
+.opt:hover:not(:disabled){border-color:var(–acc);background:rgba(200,240,96,.05)}
 .opt:disabled{cursor:default}
-.opt.correct{border-color:var(--ok);background:rgba(96,240,168,.1)}
-.opt.wrong{border-color:var(--dan);background:rgba(240,96,96,.08)}
-.ol{width:22px;height:22px;border-radius:50%;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:"Syne",sans-serif;margin-top:1px}
-.qr{font-size:13px;margin-top:10px;padding:10px 14px;border-radius:8px;background:var(--sur);color:var(--mut);line-height:1.5;display:none}
-.qr.show{display:block}.qr.cm{color:var(--ok)}.qr.wm{color:var(--dan)}
+.opt.correct{border-color:var(–ok);background:rgba(96,240,168,.1)}
+.opt.wrong{border-color:var(–dan);background:rgba(240,96,96,.08)}
+.ol{width:22px;height:22px;border-radius:50%;background:var(–s2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:“Syne”,sans-serif;margin-top:1px}
+.qr{font-size:13px;margin-top:10px;padding:10px 14px;border-radius:8px;background:var(–sur);color:var(–mut);line-height:1.5;display:none}
+.qr.show{display:block}.qr.cm{color:var(–ok)}.qr.wm{color:var(–dan)}
 .saw textarea{min-height:80px;font-size:14px;margin-top:8px}
 .panel{display:none}.panel.active{display:block;animation:fu .35s ease}
 @keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.fsc{text-align:center;padding:40px;background:var(--sur);border:1px solid var(--bor);border-radius:16px;margin-top:20px}
-.fgr{font-family:"Syne",sans-serif;font-size:72px;font-weight:800;line-height:1;margin-bottom:8px}
-.fgr.A{color:var(--ok)}.fgr.B{color:var(--acc)}.fgr.C{color:var(--ac2)}.fgr.D{color:var(--ac3)}.fgr.F{color:var(--dan)}
-.fsub{color:var(--mut);margin-bottom:24px}
+.fsc{text-align:center;padding:40px;background:var(–sur);border:1px solid var(–bor);border-radius:16px;margin-top:20px}
+.fgr{font-family:“Syne”,sans-serif;font-size:72px;font-weight:800;line-height:1;margin-bottom:8px}
+.fgr.A{color:var(–ok)}.fgr.B{color:var(–acc)}.fgr.C{color:var(–ac2)}.fgr.D{color:var(–ac3)}.fgr.F{color:var(–dan)}
+.fsub{color:var(–mut);margin-bottom:24px}
 .fst{display:flex;justify-content:center;gap:32px;margin-bottom:28px}
-.sv{font-family:"Syne",sans-serif;font-weight:700;font-size:26px}
-.slb{font-size:12px;color:var(--mut)}
-.err{background:rgba(240,96,96,.1);border:1px solid rgba(240,96,96,.3);border-radius:8px;padding:12px 16px;color:var(--dan);font-size:13.5px;margin-top:12px}
-.cc{text-align:right;font-size:12px;color:var(--mut);margin-top:6px}
-.tp{background:var(--s2);border-radius:10px;padding:16px;max-height:120px;overflow-y:auto;font-size:13.5px;color:var(--mut);line-height:1.65;border:1px solid var(--bor);margin-bottom:16px}
-.tp strong{color:var(--txt);display:block;margin-bottom:6px;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+.sv{font-family:“Syne”,sans-serif;font-weight:700;font-size:26px}
+.slb{font-size:12px;color:var(–mut)}
+.err{background:rgba(240,96,96,.1);border:1px solid rgba(240,96,96,.3);border-radius:8px;padding:12px 16px;color:var(–dan);font-size:13.5px;margin-top:12px}
+.cc{text-align:right;font-size:12px;color:var(–mut);margin-top:6px}
+.tp{background:var(–s2);border-radius:10px;padding:16px;max-height:120px;overflow-y:auto;font-size:13.5px;color:var(–mut);line-height:1.65;border:1px solid var(–bor);margin-bottom:16px}
+.tp strong{color:var(–txt);display:block;margin-bottom:6px;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
 .row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Auth styles */
+.auth-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.auth-card{background:var(–sur);border:1px solid var(–bor);border-radius:20px;padding:40px;width:100%;max-width:420px}
+.auth-logo{font-family:“Syne”,sans-serif;font-weight:800;font-size:26px;letter-spacing:-.5px;margin-bottom:8px}
+.auth-logo span{color:var(–acc)}
+.auth-sub{color:var(–mut);font-size:14px;margin-bottom:32px}
+.inp{width:100%;background:var(–s2);border:1px solid var(–bor);border-radius:10px;color:var(–txt);font-family:“DM Sans”,sans-serif;font-size:14.5px;padding:12px 16px;outline:none;transition:border-color .2s;margin-bottom:14px}
+.inp:focus{border-color:var(–acc)}
+.auth-switch{text-align:center;margin-top:16px;font-size:13.5px;color:var(–mut)}
+.auth-switch a{color:var(–acc);cursor:pointer;text-decoration:none}
+.auth-switch a:hover{text-decoration:underline}
+.auth-err{background:rgba(240,96,96,.1);border:1px solid rgba(240,96,96,.3);border-radius:8px;padding:10px 14px;color:var(–dan);font-size:13px;margin-bottom:14px;display:none}
+
+/* History styles */
+.hist-item{background:var(–s2);border:1px solid var(–bor);border-radius:12px;padding:18px 20px;margin-bottom:12px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:border-color .2s}
+.hist-item:hover{border-color:var(–acc)}
+.hist-score{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:“Syne”,sans-serif;font-weight:800;font-size:16px;flex-shrink:0}
+.hist-info{flex:1;min-width:0}
+.hist-title{font-weight:500;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.hist-meta{font-size:12px;color:var(–mut)}
+.hist-del{background:none;border:none;color:var(–mut);cursor:pointer;font-size:18px;padding:4px;flex-shrink:0;transition:color .2s}
+.hist-del:hover{color:var(–dan)}
+.empty-hist{text-align:center;padding:48px 24px;color:var(–mut)}
+.empty-hist div{font-size:40px;margin-bottom:12px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-email{font-size:13px;color:var(–mut)}
 </style>
+
 </head>
 <body>
-<div class="app">
-  <header>
-    <div class="logo">Summar<span>AI</span></div>
-    <div class="bdg">Study Tool</div>
-  </header>
-  <div class="steps">
-    <div class="step active" id="si1"><div class="snum">1</div><span>Load Text</span></div>
-    <div class="scon"></div>
-    <div class="step" id="si2"><div class="snum">2</div><span>Summarize</span></div>
-    <div class="scon"></div>
-    <div class="step" id="si3"><div class="snum">3</div><span>Feedback</span></div>
-    <div class="scon"></div>
-    <div class="step" id="si4"><div class="snum">4</div><span>Quiz</span></div>
-  </div>
-  <div class="panel active" id="p1">
-    <div class="card">
-      <div class="ct">Load your text</div>
-      <div class="cs">Paste a passage or upload a PDF to get started.</div>
-      <div class="tabs">
-        <button class="tab active" id="tab0">Paste Text</button>
-        <button class="tab" id="tab1">Upload PDF</button>
-      </div>
-      <div id="tp0">
-        <textarea id="pin" placeholder="Paste an article, chapter, or any passage here..."></textarea>
-        <div class="cc"><span id="cc">0</span> characters</div>
-      </div>
-      <div id="tp1" style="display:none">
-        <div class="dz" id="dz">
-          <input type="file" id="fileinput" accept=".pdf">
-          <div style="font-size:36px;margin-bottom:10px">&#128196;</div>
-          <div style="color:var(--mut);font-size:14px"><strong style="color:var(--txt)">Drop a PDF file</strong> or click to browse</div>
-        </div>
-        <div id="finfo" style="display:none"></div>
-      </div>
-      <div id="p1err" class="err" style="display:none"></div>
-      <div style="margin-top:20px">
-        <button class="btn bp" id="btn1" disabled>Continue to Summarize &#8594;</button>
-      </div>
+
+<!-- AUTH SCREEN -->
+
+<div id="screen-auth" class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">Summar<span>AI</span></div>
+    <div style="display:flex;gap:4px;background:var(--s2);border-radius:10px;padding:4px;margin-bottom:24px">
+      <button id="tab-signin" style="flex:1;padding:8px;border-radius:7px;border:none;background:var(--sur);color:var(--txt);font-family:DM Sans,sans-serif;font-size:14px;font-weight:500;cursor:pointer">Sign In</button>
+      <button id="tab-signup" style="flex:1;padding:8px;border-radius:7px;border:none;background:transparent;color:var(--mut);font-family:DM Sans,sans-serif;font-size:14px;font-weight:500;cursor:pointer">Sign Up</button>
     </div>
-  </div>
-  <div class="panel" id="p2">
-    <div class="card">
-      <div class="ct">Read &amp; Summarize</div>
-      <div class="cs">Read the passage below, then write your summary in your own words.</div>
-      <div class="tp"><strong>Source Text</strong><span id="src-prev"></span></div>
-      <label style="font-size:13px;color:var(--mut);font-weight:500;display:block;margin-bottom:8px">Your Summary</label>
-      <textarea id="usum" placeholder="Write the main ideas, key points, and important details..." style="min-height:200px"></textarea>
-      <div class="cc"><span id="sc">0</span> characters</div>
-      <div id="sumerr" class="err" style="display:none">Please write at least 80 characters before getting feedback.</div>
-      <div class="row" style="margin-top:20px">
-        <button class="btn bg" id="btnback2">&#8592; Back</button>
-        <button class="btn bp" id="btnfb" disabled>Get AI Feedback &#8594;</button>
-      </div>
-    </div>
-  </div>
-  <div class="panel" id="p3">
-    <div class="card">
-      <div class="ct">AI Feedback</div>
-      <div class="cs">Here is a detailed breakdown of your summary.</div>
-      <div id="fbload" class="ld"><div class="sp"></div>&nbsp;Analyzing your summary&#8230;</div>
-      <div id="fbcontent" style="display:none"></div>
-      <div id="fbactions" class="row" style="display:none;margin-top:24px">
-        <button class="btn bg" id="btnback3">&#8592; Revise Summary</button>
-        <button class="btn bp" id="btnquiz">Take the Quiz &#8594;</button>
-      </div>
-    </div>
-  </div>
-  <div class="panel" id="p4">
-    <div class="card">
-      <div class="ct">Knowledge Quiz</div>
-      <div class="cs">Answer questions about the text to test your comprehension.</div>
-      <div id="qzload" class="ld"><div class="sp"></div>&nbsp;Generating quiz&#8230;</div>
-      <div id="qzcontent" style="display:none"></div>
-      <div id="qzactions" class="row" style="display:none;margin-top:20px">
-        <button class="btn bp" id="btnsub">Submit Quiz &#8594;</button>
-      </div>
-    </div>
-    <div id="result"></div>
+    <div class="auth-err" id="auth-err"></div>
+    <input class="inp" type="email" id="auth-email" placeholder="Email address" autocomplete="email">
+    <input class="inp" type="password" id="auth-pass" placeholder="Password" autocomplete="current-password">
+    <button class="btn bp" id="auth-btn" style="width:100%;justify-content:center">Sign In</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
-<script type="module">
-var PDFWORKER = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
-var src = '', fbScore = 0, quizData = [], activeTab = 0;
 
+<!-- HISTORY SCREEN -->
+
+<div id="screen-history" style="display:none">
+  <div class="app">
+    <div class="nav-bar">
+      <div class="logo">Summar<span style="color:var(--acc)">AI</span></div>
+      <div class="nav-right">
+        <span class="nav-email" id="nav-email"></span>
+        <button class="btn bs" id="btn-new" style="padding:8px 18px;font-size:13px">+ New Session</button>
+        <button class="btn bg" id="btn-signout" style="padding:8px 18px;font-size:13px">Sign Out</button>
+      </div>
+    </div>
+    <div class="ct" style="margin-bottom:6px">Your Sessions</div>
+    <div class="cs" style="margin-bottom:24px">Tap a session to review it, or start a new one.</div>
+    <div id="hist-list"></div>
+  </div>
+</div>
+
+<!-- MAIN APP SCREEN -->
+
+<div id="screen-app" style="display:none">
+  <div class="app">
+    <div class="nav-bar">
+      <div class="logo">Summar<span style="color:var(--acc)">AI</span></div>
+      <div class="nav-right">
+        <button class="btn bs" id="btn-history" style="padding:8px 18px;font-size:13px">&#8592; History</button>
+        <button class="btn bg" id="btn-signout2" style="padding:8px 18px;font-size:13px">Sign Out</button>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step active" id="si1"><div class="snum">1</div><span>Load Text</span></div>
+      <div class="scon"></div>
+      <div class="step" id="si2"><div class="snum">2</div><span>Summarize</span></div>
+      <div class="scon"></div>
+      <div class="step" id="si3"><div class="snum">3</div><span>Feedback</span></div>
+      <div class="scon"></div>
+      <div class="step" id="si4"><div class="snum">4</div><span>Quiz</span></div>
+    </div>
+    <div class="panel active" id="p1">
+      <div class="card">
+        <div class="ct">Load your text</div>
+        <div class="cs">Paste a passage or upload a PDF to get started.</div>
+        <div class="tabs">
+          <button class="tab active" id="tab0">Paste Text</button>
+          <button class="tab" id="tab1">Upload PDF</button>
+        </div>
+        <div id="tp0">
+          <textarea id="pin" placeholder="Paste an article, chapter, or any passage here..."></textarea>
+          <div class="cc"><span id="cc">0</span> characters</div>
+        </div>
+        <div id="tp1" style="display:none">
+          <div class="dz" id="dz">
+            <input type="file" id="fileinput" accept=".pdf">
+            <div style="font-size:36px;margin-bottom:10px">&#128196;</div>
+            <div style="color:var(--mut);font-size:14px"><strong style="color:var(--txt)">Drop a PDF file</strong> or click to browse</div>
+          </div>
+          <div id="finfo" style="display:none"></div>
+        </div>
+        <div id="p1err" class="err" style="display:none"></div>
+        <div style="margin-top:20px">
+          <button class="btn bp" id="btn1" disabled>Continue to Summarize &#8594;</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="p2">
+      <div class="card">
+        <div class="ct">Read &amp; Summarize</div>
+        <div class="cs">Read the passage below, then write your summary in your own words.</div>
+        <div class="tp"><strong>Source Text</strong><span id="src-prev"></span></div>
+        <label style="font-size:13px;color:var(--mut);font-weight:500;display:block;margin-bottom:8px">Your Summary</label>
+        <textarea id="usum" placeholder="Write the main ideas, key points, and important details..." style="min-height:200px"></textarea>
+        <div class="cc"><span id="sc">0</span> characters</div>
+        <div id="sumerr" class="err" style="display:none">Please write at least 80 characters before getting feedback.</div>
+        <div class="row" style="margin-top:20px">
+          <button class="btn bg" id="btnback2">&#8592; Back</button>
+          <button class="btn bp" id="btnfb" disabled>Get AI Feedback &#8594;</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="p3">
+      <div class="card">
+        <div class="ct">AI Feedback</div>
+        <div class="cs">Here is a detailed breakdown of your summary.</div>
+        <div id="fbload" class="ld"><div class="sp"></div>&nbsp;Analyzing your summary&#8230;</div>
+        <div id="fbcontent" style="display:none"></div>
+        <div id="fbactions" class="row" style="display:none;margin-top:24px">
+          <button class="btn bg" id="btnback3">&#8592; Revise Summary</button>
+          <button class="btn bp" id="btnquiz">Take the Quiz &#8594;</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="p4">
+      <div class="card">
+        <div class="ct">Knowledge Quiz</div>
+        <div class="cs">Answer questions about the text to test your comprehension.</div>
+        <div id="qzload" class="ld"><div class="sp"></div>&nbsp;Generating quiz&#8230;</div>
+        <div id="qzcontent" style="display:none"></div>
+        <div id="qzactions" class="row" style="display:none;margin-top:20px">
+          <button class="btn bp" id="btnsub">Submit Quiz &#8594;</button>
+        </div>
+      </div>
+      <div id="result"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script type="module">
+const SUPABASE_URL = 'https://rmxckkpteblnvjdgugcm.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_BjaS3DNgdawXHXwU9oy0sQ_LFNrSnRb';
+const PROXY = 'https://bananaman-mrnibls-summarai-proxy.hf.space';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+if (typeof pdfjsLib !== 'undefined') {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
+}
+
+var src = '', fbScore = 0, fbData = null, quizData = [], activeTab = 0, currentUser = null, currentSessionId = null;
+
+// ── Auth ─────────────────────────────────────────────────────────────
+var authMode = 'signin';
+
+function showScreen(name) {
+  document.getElementById('screen-auth').style.display = name === 'auth' ? 'flex' : 'none';
+  document.getElementById('screen-history').style.display = name === 'history' ? 'block' : 'none';
+  document.getElementById('screen-app').style.display = name === 'app' ? 'block' : 'none';
+}
+
+async function checkSession() {
+  const { data } = await sb.auth.getSession();
+  if (data.session) {
+    currentUser = data.session.user;
+    document.getElementById('nav-email').textContent = currentUser.email;
+    showScreen('history');
+    loadHistory();
+  } else {
+    showScreen('auth');
+  }
+}
+
+function setAuthMode(mode) {
+  authMode = mode;
+  var isSignin = mode === 'signin';
+  document.getElementById('auth-btn').textContent = isSignin ? 'Sign In' : 'Create Account';
+  document.getElementById('auth-err').style.display = 'none';
+  document.getElementById('tab-signin').style.background = isSignin ? 'var(--sur)' : 'transparent';
+  document.getElementById('tab-signin').style.color = isSignin ? 'var(--txt)' : 'var(--mut)';
+  document.getElementById('tab-signup').style.background = isSignin ? 'transparent' : 'var(--sur)';
+  document.getElementById('tab-signup').style.color = isSignin ? 'var(--mut)' : 'var(--txt)';
+  document.getElementById('auth-pass').autocomplete = isSignin ? 'current-password' : 'new-password';
+}
+document.getElementById('tab-signin').addEventListener('click', function() { setAuthMode('signin'); });
+document.getElementById('tab-signup').addEventListener('click', function() { setAuthMode('signup'); });
+
+document.getElementById('auth-btn').addEventListener('click', async function() {
+  const email = document.getElementById('auth-email').value.trim();
+  const pass = document.getElementById('auth-pass').value;
+  const errEl = document.getElementById('auth-err');
+  errEl.style.display = 'none';
+  if (!email || !pass) { errEl.textContent = 'Please enter your email and password.'; errEl.style.display = 'block'; return; }
+  this.disabled = true; this.textContent = 'Please wait...';
+  let error;
+  if (authMode === 'signup') {
+    const res = await sb.auth.signUp({ email, password: pass });
+    error = res.error;
+    if (!error) { errEl.style.color = 'var(--ok)'; errEl.textContent = 'Account created! Check your email to confirm, then sign in.'; errEl.style.display = 'block'; this.disabled = false; this.textContent = 'Create Account'; return; }
+  } else {
+    const res = await sb.auth.signInWithPassword({ email, password: pass });
+    error = res.error;
+    if (!error) { currentUser = res.data.user; document.getElementById('nav-email').textContent = currentUser.email; showScreen('history'); loadHistory(); this.disabled = false; this.textContent = 'Sign In'; return; }
+  }
+  errEl.style.color = 'var(--dan)'; errEl.textContent = error.message; errEl.style.display = 'block';
+  this.disabled = false; this.textContent = authMode === 'signin' ? 'Sign In' : 'Create Account';
+});
+
+async function signOut() {
+  await sb.auth.signOut();
+  currentUser = null; src = ''; fbData = null; quizData = []; currentSessionId = null;
+  showScreen('auth');
+}
+
+document.getElementById('btn-signout').addEventListener('click', signOut);
+document.getElementById('btn-signout2').addEventListener('click', signOut);
+
+// ── History ───────────────────────────────────────────────────────────
+async function loadHistory() {
+  const list = document.getElementById('hist-list');
+  list.innerHTML = '<div class="ld"><div class="sp"></div>&nbsp;Loading sessions&hellip;</div>';
+  const { data, error } = await sb.from('sessions').select('*').order('created_at', { ascending: false });
+  if (error) { list.innerHTML = '<div class="err">Could not load sessions: ' + error.message + '</div>'; return; }
+  if (!data || data.length === 0) {
+    list.innerHTML = '<div class="empty-hist"><div>&#128214;</div><div style="font-weight:600;margin-bottom:6px">No sessions yet</div><div style="font-size:13px">Start a new session to see your history here.</div></div>';
+    return;
+  }
+  list.innerHTML = '';
+  data.forEach(function(s) {
+    var score = s.feedback_score || 0;
+    var clr = score >= 80 ? 'var(--ok)' : score >= 60 ? 'var(--acc)' : 'var(--ac3)';
+    var bg = score >= 80 ? 'rgba(96,240,168,.15)' : score >= 60 ? 'rgba(200,240,96,.15)' : 'rgba(240,96,96,.15)';
+    var date = new Date(s.created_at).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' });
+    var preview = (s.source_text || '').substring(0, 80).replace(/\n/g, ' ') + '...';
+    var item = document.createElement('div');
+    item.className = 'hist-item';
+    item.innerHTML = '<div class="hist-score" style="background:' + bg + ';color:' + clr + '">' + score + '</div>' +
+      '<div class="hist-info"><div class="hist-title">' + preview + '</div>' +
+      '<div class="hist-meta">' + date + (s.quiz_score !== null ? ' &middot; Quiz: ' + s.quiz_score + '%' : '') + (s.feedback_label ? ' &middot; ' + s.feedback_label : '') + '</div></div>' +
+      '<button class="hist-del" data-id="' + s.id + '" title="Delete">&#x2715;</button>';
+    item.querySelector('.hist-del').addEventListener('click', async function(e) {
+      e.stopPropagation();
+      if (!confirm('Delete this session?')) return;
+      await sb.from('sessions').delete().eq('id', this.dataset.id);
+      loadHistory();
+    });
+    item.addEventListener('click', function() { viewSession(s); });
+    list.appendChild(item);
+  });
+}
+
+function viewSession(s) {
+  src = s.source_text || '';
+  currentSessionId = s.id;
+  document.getElementById('src-prev').textContent = src.substring(0, 600) + (src.length > 600 ? '...' : '');
+  document.getElementById('usum').value = s.summary || '';
+  document.getElementById('sc').textContent = (s.summary || '').length;
+  document.getElementById('btnfb').disabled = (s.summary || '').trim().length < 80;
+  showScreen('app');
+  if (s.feedback_score) {
+    fbData = { score: s.feedback_score, scoreLabel: s.feedback_label, positive: s.feedback_positive, improve: s.feedback_improve, missing: s.feedback_missing, tip: s.feedback_tip };
+    fbScore = s.feedback_score;
+    renderFeedback(fbData);
+    goPanel(3);
+  } else {
+    goPanel(2);
+  }
+}
+
+document.getElementById('btn-new').addEventListener('click', function() {
+  src = ''; fbData = null; quizData = []; currentSessionId = null; activeTab = 0;
+  document.getElementById('pin').value = ''; document.getElementById('usum').value = '';
+  document.getElementById('cc').textContent = '0'; document.getElementById('sc').textContent = '0';
+  clearFile(); switchTab(0); goPanel(1); showScreen('app');
+});
+
+document.getElementById('btn-history').addEventListener('click', function() {
+  showScreen('history'); loadHistory();
+});
+
+// ── Save session ──────────────────────────────────────────────────────
+async function saveSession(fb, quizScore) {
+  if (!currentUser) return;
+  var sum = document.getElementById('usum').value.trim();
+  var payload = {
+    user_id: currentUser.id,
+    source_text: src.substring(0, 5000),
+    summary: sum,
+    feedback_score: fb.score,
+    feedback_label: fb.scoreLabel,
+    feedback_positive: fb.positive,
+    feedback_improve: fb.improve,
+    feedback_missing: fb.missing,
+    feedback_tip: fb.tip,
+    quiz_score: quizScore !== undefined ? quizScore : null
+  };
+  if (currentSessionId) {
+    await sb.from('sessions').update(payload).eq('id', currentSessionId);
+  } else {
+    const { data } = await sb.from('sessions').insert(payload).select();
+    if (data && data[0]) currentSessionId = data[0].id;
+  }
+}
+
+// ── Navigation ────────────────────────────────────────────────────────
 function goPanel(n) {
   document.querySelectorAll('.panel').forEach(function(p, i) { p.classList.toggle('active', i === n - 1); });
   for (var i = 1; i <= 4; i++) {
@@ -189,9 +427,7 @@ function switchTab(n) {
   checkBtn1();
 }
 
-function checkBtn1() {
-  document.getElementById('btn1').disabled = src.trim().length < 100;
-}
+function checkBtn1() { document.getElementById('btn1').disabled = src.trim().length < 100; }
 
 function clearFile() {
   src = '';
@@ -200,56 +436,48 @@ function clearFile() {
   checkBtn1();
 }
 
-async function readPDF(file) {
+// ── PDF ───────────────────────────────────────────────────────────────
+function readPDF(file) {
   document.getElementById('p1err').style.display = 'none';
-  pdfjsLib.GlobalWorkerOptions.workerSrc = PDFWORKER;
+  if (typeof pdfjsLib === 'undefined') { document.getElementById('p1err').textContent = 'PDF reader not loaded yet.'; document.getElementById('p1err').style.display = 'block'; return; }
   document.getElementById('dz').style.display = 'none';
   var fi = document.getElementById('finfo');
   fi.style.display = 'block';
   fi.innerHTML = '<div class="fbox"><div class="sp"></div><span style="color:var(--mut);font-size:14px">&nbsp;Reading PDF&hellip;</span></div>';
-  try {
-    var ab = await file.arrayBuffer();
-    var pdf = await pdfjsLib.getDocument({ data: new Uint8Array(ab) }).promise;
-    var pages = [];
-    for (var i = 1; i <= pdf.numPages; i++) {
-      var page = await pdf.getPage(i);
-      var ct = await page.getTextContent();
-      pages.push(ct.items.map(function(s) { return s.str; }).join(' '));
-    }
-    src = pages.join('\n').trim();
-    if (src.length < 50) {
-      fi.style.display = 'none';
-      document.getElementById('dz').style.display = 'block';
-      document.getElementById('p1err').textContent = 'This PDF has no extractable text (may be scanned/image-based).';
-      document.getElementById('p1err').style.display = 'block';
-      return;
-    }
-    var kb = Math.round(file.size / 102.4) / 10;
-    var words = src.split(/\s+/).length;
-    fi.innerHTML = '<div class="fbox"><span style="font-size:22px">&#128196;</span><div style="flex:1"><div style="font-weight:500;font-size:14px">' + file.name + '</div><div style="color:var(--mut);font-size:12px">' + kb + ' KB &middot; ~' + words + ' words</div></div><button id="clrbtn" style="background:none;border:none;color:var(--mut);cursor:pointer;font-size:18px;padding:4px">&#x2715;</button></div>';
-    document.getElementById('clrbtn').addEventListener('click', clearFile);
-    checkBtn1();
-  } catch (err) {
-    fi.style.display = 'none';
-    document.getElementById('dz').style.display = 'block';
-    document.getElementById('p1err').textContent = 'Could not read PDF: ' + err.message;
-    document.getElementById('p1err').style.display = 'block';
-  }
+  var reader = new FileReader();
+  reader.onload = async function(e) {
+    try {
+      var pdf = await pdfjsLib.getDocument({ data: new Uint8Array(e.target.result) }).promise;
+      var pages = [];
+      for (var i = 1; i <= pdf.numPages; i++) {
+        var page = await pdf.getPage(i);
+        var ct = await page.getTextContent();
+        pages.push(ct.items.map(function(s) { return s.str; }).join(' '));
+      }
+      src = pages.join('\n').trim();
+      if (src.length < 50) { fi.style.display = 'none'; document.getElementById('dz').style.display = 'block'; document.getElementById('p1err').textContent = 'This PDF has no extractable text.'; document.getElementById('p1err').style.display = 'block'; return; }
+      var kb = Math.round(file.size / 102.4) / 10;
+      fi.innerHTML = '<div class="fbox"><span style="font-size:22px">&#128196;</span><div style="flex:1"><div style="font-weight:500;font-size:14px">' + file.name + '</div><div style="color:var(--mut);font-size:12px">' + kb + ' KB &middot; ~' + src.split(/\s+/).length + ' words</div></div><button id="clrbtn" style="background:none;border:none;color:var(--mut);cursor:pointer;font-size:18px;padding:4px">&#x2715;</button></div>';
+      document.getElementById('clrbtn').addEventListener('click', clearFile);
+      checkBtn1();
+    } catch(err) { fi.style.display = 'none'; document.getElementById('dz').style.display = 'block'; document.getElementById('p1err').textContent = 'Could not read PDF: ' + err.message; document.getElementById('p1err').style.display = 'block'; }
+  };
+  reader.readAsArrayBuffer(file);
 }
 
-async function callClaude(prompt, maxTok) {
-  var res = await fetch('https://bananaman-mrnibls-summarai-proxy.hf.space', {
+// ── Claude/Groq ───────────────────────────────────────────────────────
+async function callAI(prompt, maxTok) {
+  var res = await fetch(PROXY, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: maxTok || 1000, messages: [{ role: 'user', content: prompt }] })
   });
   var d = await res.json();
-  if (!d.content) {
-    throw new Error('API error: ' + JSON.stringify(d));
-  }
+  if (!d.content) throw new Error('API error: ' + JSON.stringify(d));
   return d.content.map(function(b) { return b.text || ''; }).join('').replace(/```json/g, '').replace(/```/g, '').trim();
 }
 
+// ── Feedback ──────────────────────────────────────────────────────────
 async function getFeedback() {
   var sum = document.getElementById('usum').value.trim();
   if (sum.length < 80) { document.getElementById('sumerr').style.display = 'block'; return; }
@@ -259,27 +487,33 @@ async function getFeedback() {
   document.getElementById('fbcontent').style.display = 'none';
   document.getElementById('fbactions').style.display = 'none';
   try {
-    var raw = await callClaude('You are an expert writing tutor. Analyze this student summary and respond ONLY with a JSON object, no markdown. Original text: ' + src.substring(0, 3000) + ' Student summary: ' + sum + ' JSON format: {"score":75,"scoreLabel":"Good","positive":"...","improve":"...","missing":"...","tip":"..."}', 1000);
-    var fb = JSON.parse(raw);
-    fbScore = fb.score;
-    var r = 46, circ = +(2 * Math.PI * r).toFixed(3), off = +(circ - (fb.score / 100) * circ).toFixed(3);
-    var clr = fb.score >= 80 ? 'var(--ok)' : fb.score >= 60 ? 'var(--acc)' : 'var(--ac3)';
-    document.getElementById('fbcontent').innerHTML =
-      '<div class="rw"><div class="ring"><svg width="110" height="110" viewBox="0 0 110 110"><circle class="rt" cx="55" cy="55" r="' + r + '"/><circle class="rf" cx="55" cy="55" r="' + r + '" stroke-dasharray="' + circ + '" stroke-dashoffset="' + circ + '" id="rfill" style="stroke:' + clr + '"/></svg><div class="rtx"><div class="rn">' + fb.score + '</div><div class="rlb">/ 100</div></div></div><div style="margin-top:10px;font-family:Syne,sans-serif;font-weight:700;font-size:15px">' + fb.scoreLabel + '</div></div>' +
-      '<div class="fbb pos"><div class="fblb">&#10003; What you did well</div><p>' + fb.positive + '</p></div>' +
-      '<div class="fbb imp"><div class="fblb">&#8593; How to improve</div><p>' + fb.improve + '</p></div>' +
-      '<div class="fbb mis"><div class="fblb">&#9711; Key ideas coverage</div><p>' + fb.missing + '</p></div>' +
-      '<div style="background:var(--s2);border-radius:10px;padding:14px 16px;margin-top:4px"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:6px">&#128161; Pro Tip</div><p style="font-size:14px">' + fb.tip + '</p></div>';
-    document.getElementById('fbcontent').style.display = 'block';
-    document.getElementById('fbactions').style.display = 'flex';
-    setTimeout(function() { var el = document.getElementById('rfill'); if (el) el.style.strokeDashoffset = off; }, 100);
-  } catch (err) {
+    var raw = await callAI('You are an expert writing tutor. Analyze this student summary and respond ONLY with a JSON object, no markdown. Original text: ' + src.substring(0, 3000) + ' Student summary: ' + sum + ' JSON: {"score":75,"scoreLabel":"Good","positive":"...","improve":"...","missing":"...","tip":"..."}', 1000);
+    fbData = JSON.parse(raw);
+    fbScore = fbData.score;
+    renderFeedback(fbData);
+    await saveSession(fbData, null);
+  } catch(err) {
     document.getElementById('fbcontent').innerHTML = '<div class="err">Error: ' + err.message + '</div>';
     document.getElementById('fbcontent').style.display = 'block';
   }
   document.getElementById('fbload').style.display = 'none';
 }
 
+function renderFeedback(fb) {
+  var r = 46, circ = +(2 * Math.PI * r).toFixed(3), off = +(circ - (fb.score / 100) * circ).toFixed(3);
+  var clr = fb.score >= 80 ? 'var(--ok)' : fb.score >= 60 ? 'var(--acc)' : 'var(--ac3)';
+  document.getElementById('fbcontent').innerHTML =
+    '<div class="rw"><div class="ring"><svg width="110" height="110" viewBox="0 0 110 110"><circle class="rt" cx="55" cy="55" r="' + r + '"/><circle class="rf" cx="55" cy="55" r="' + r + '" stroke-dasharray="' + circ + '" stroke-dashoffset="' + circ + '" id="rfill" style="stroke:' + clr + '"/></svg><div class="rtx"><div class="rn">' + fb.score + '</div><div class="rlb">/ 100</div></div></div><div style="margin-top:10px;font-family:Syne,sans-serif;font-weight:700;font-size:15px">' + fb.scoreLabel + '</div></div>' +
+    '<div class="fbb pos"><div class="fblb">&#10003; What you did well</div><p>' + fb.positive + '</p></div>' +
+    '<div class="fbb imp"><div class="fblb">&#8593; How to improve</div><p>' + fb.improve + '</p></div>' +
+    '<div class="fbb mis"><div class="fblb">&#9711; Key ideas coverage</div><p>' + fb.missing + '</p></div>' +
+    '<div style="background:var(--s2);border-radius:10px;padding:14px 16px;margin-top:4px"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:6px">&#128161; Pro Tip</div><p style="font-size:14px">' + fb.tip + '</p></div>';
+  document.getElementById('fbcontent').style.display = 'block';
+  document.getElementById('fbactions').style.display = 'flex';
+  setTimeout(function() { var el = document.getElementById('rfill'); if (el) el.style.strokeDashoffset = off; }, 100);
+}
+
+// ── Quiz ──────────────────────────────────────────────────────────────
 async function startQuiz() {
   goPanel(4);
   document.getElementById('qzload').style.display = 'flex';
@@ -287,124 +521,106 @@ async function startQuiz() {
   document.getElementById('qzactions').style.display = 'none';
   document.getElementById('result').innerHTML = '';
   try {
-    var raw = await callClaude('Create exactly 5 reading comprehension questions for this text: ' + src.substring(0, 3000) + ' Use 3 multiple choice (4 options A-D) and 2 short answer. Respond ONLY with a raw JSON array, no markdown. MC: {"type":"mc","question":"...","options":["A) ...","B) ...","C) ...","D) ..."],"answer":"A","explanation":"..."} SA: {"type":"sa","question":"...","sampleAnswer":"...","keywords":["w1","w2"]}', 1500);
+    var raw = await callAI('Create exactly 5 reading comprehension questions for this text: ' + src.substring(0, 3000) + ' Use 3 multiple choice (4 options A-D) and 2 short answer. Respond ONLY with a raw JSON array, no markdown. MC: {"type":"mc","question":"...","options":["A) ...","B) ...","C) ...","D) ..."],"answer":"A","explanation":"..."} SA: {"type":"sa","question":"...","sampleAnswer":"...","keywords":["w1","w2"]}', 1500);
     quizData = JSON.parse(raw);
     var L = ['A','B','C','D'], html = '';
     quizData.forEach(function(q, qi) {
       if (q.type === 'mc') {
         html += '<div class="qq" id="q' + qi + '"><div class="qn">Q' + (qi+1) + ' &middot; Multiple Choice</div><div class="qt">' + q.question + '</div><div class="opts">';
-        q.options.forEach(function(opt, oi) {
-          html += '<button class="opt" data-qi="' + qi + '" data-oi="' + oi + '"><span class="ol">' + L[oi] + '</span><span>' + opt.replace(/^[A-D]\)\s*/, '') + '</span></button>';
-        });
+        q.options.forEach(function(opt, oi) { html += '<button class="opt" data-qi="' + qi + '" data-oi="' + oi + '"><span class="ol">' + L[oi] + '</span><span>' + opt.replace(/^[A-D]\)\s*/, '') + '</span></button>'; });
         html += '</div><div class="qr" id="r' + qi + '"></div></div>';
       } else {
         html += '<div class="qq" id="q' + qi + '"><div class="qn">Q' + (qi+1) + ' &middot; Short Answer</div><div class="qt">' + q.question + '</div><div class="saw"><textarea id="sa' + qi + '" placeholder="Type your answer here..."></textarea></div></div>';
-      }
-    });
-    document.getElementById('qzcontent').innerHTML = html;
-    document.querySelectorAll('.opt').forEach(function(btn) {
-      btn.addEventListener('click', function() { pick(+this.dataset.qi, +this.dataset.oi); });
-    });
-    document.getElementById('qzcontent').style.display = 'block';
-    document.getElementById('qzactions').style.display = 'flex';
-  } catch (err) {
-    document.getElementById('qzcontent').innerHTML = '<div class="err">Could not generate quiz: ' + err.message + '</div>';
-    document.getElementById('qzcontent').style.display = 'block';
+
+```
   }
-  document.getElementById('qzload').style.display = 'none';
+});
+document.getElementById('qzcontent').innerHTML = html;
+document.querySelectorAll('.opt').forEach(function(btn) { btn.addEventListener('click', function() { pick(+this.dataset.qi, +this.dataset.oi); }); });
+document.getElementById('qzcontent').style.display = 'block';
+document.getElementById('qzactions').style.display = 'flex';
+```
+
+} catch(err) {
+document.getElementById(‘qzcontent’).innerHTML = ’<div class="err">Could not generate quiz: ’ + err.message + ‘</div>’;
+document.getElementById(‘qzcontent’).style.display = ‘block’;
+}
+document.getElementById(‘qzload’).style.display = ‘none’;
 }
 
 function pick(qi, sel) {
-  var q = quizData[qi], L = ['A','B','C','D'], ci = L.indexOf(q.answer);
-  for (var i = 0; i < 4; i++) {
-    var b = document.getElementById('o' + qi + '_' + i);
-    if (b) { b.disabled = true; b.classList.remove('correct','wrong'); }
-  }
-  document.querySelectorAll('[data-qi="' + qi + '"]').forEach(function(b, i) {
-    b.disabled = true;
-    if (i === ci) b.classList.add('correct');
-    else if (i === sel) b.classList.add('wrong');
-  });
-  var r = document.getElementById('r' + qi);
-  r.classList.add('show', sel === ci ? 'cm' : 'wm');
-  r.textContent = (sel === ci ? 'Correct! ' : 'Not quite. ') + q.explanation;
+var q = quizData[qi], L = [‘A’,‘B’,‘C’,‘D’], ci = L.indexOf(q.answer);
+document.querySelectorAll(’[data-qi=”’ + qi + ‘”]’).forEach(function(b, i) { b.disabled = true; if (i === ci) b.classList.add(‘correct’); else if (i === sel) b.classList.add(‘wrong’); });
+var r = document.getElementById(‘r’ + qi);
+r.classList.add(‘show’, sel === ci ? ‘cm’ : ‘wm’);
+r.textContent = (sel === ci ? ’Correct! ’ : ’Not quite. ’) + q.explanation;
 }
 
 async function submitQuiz() {
-  document.getElementById('btnsub').disabled = true;
-  document.getElementById('btnsub').textContent = 'Grading...';
-  var L = ['A','B','C','D'], mcC = 0, mcT = 0, sa = [];
-  quizData.forEach(function(q, qi) {
-    if (q.type === 'mc') {
-      mcT++;
-      var ci = L.indexOf(q.answer), r = document.getElementById('r' + qi);
-      if (!r.classList.contains('show')) {
-        document.querySelectorAll('[data-qi="' + qi + '"]').forEach(function(b, i) { b.disabled = true; if (i === ci) b.classList.add('correct'); });
-        r.classList.add('show','wm'); r.textContent = 'Not answered. ' + q.explanation;
-      } else if (r.classList.contains('cm')) mcC++;
-    } else {
-      var el = document.getElementById('sa' + qi);
-      sa.push({ qi: qi, q: q.question, a: el ? el.value.trim() : '', sa: q.sampleAnswer });
-    }
-  });
-  var saScore = 0;
-  if (sa.length > 0) {
-    try {
-      var raw = await callClaude('Grade these short answers 0-10 each. Respond ONLY with a raw JSON array, no markdown: [{"score":N,"feedback":"..."},...] ' + sa.map(function(s, i) { return 'Q' + (i+1) + ': ' + s.q + ' Sample: ' + s.sa + ' Student: "' + s.a + '"'; }).join(' | '), 600);
-      JSON.parse(raw).forEach(function(g, i) {
-        var qi = sa[i].qi; saScore += g.score;
-        var ta = document.getElementById('sa' + qi); if (ta) ta.disabled = true;
-        var el = document.createElement('div');
-        el.className = 'qr show ' + (g.score >= 6 ? 'cm' : 'wm');
-        el.textContent = 'Score: ' + g.score + '/10 - ' + g.feedback;
-        document.getElementById('q' + qi).appendChild(el);
-      });
-    } catch(e) { saScore = sa.length * 5; }
-  }
-  var mp = mcT > 0 ? (mcC / mcT) * 100 : 100;
-  var sp2 = sa.length > 0 ? (saScore / (sa.length * 10)) * 100 : 100;
-  var tot = Math.round(sa.length > 0 ? (mp + sp2) / 2 : mp);
-  var g = tot >= 90 ? 'A' : tot >= 80 ? 'B' : tot >= 70 ? 'C' : tot >= 60 ? 'D' : 'F';
-  var msgs = { A:'Outstanding! Excellent grasp of the material.', B:'Great work! You understood most key ideas.', C:'Good effort! Review the explanations.', D:'Keep at it! Re-reading the text will help.', F:"Don't give up! Review carefully and try again." };
-  document.getElementById('result').innerHTML = '<div class="fsc"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:16px">Quiz Complete</div><div class="fgr ' + g + '">' + g + '</div><div class="fsub">' + tot + '% &middot; ' + msgs[g] + '</div><div class="fst"><div><div class="sv" style="color:var(--acc)">' + (mcT > 0 ? mcC + '/' + mcT : '&mdash;') + '</div><div class="slb">MC Correct</div></div><div><div class="sv" style="color:var(--ac2)">' + fbScore + '</div><div class="slb">Summary Score</div></div><div><div class="sv" style="color:var(--ok)">' + tot + '%</div><div class="slb">Quiz Score</div></div></div><div class="row" style="justify-content:center"><button id="btnrevise" class="btn bs">Revise Summary</button>&nbsp;<button id="btnrestart" class="btn bp">Start Over &#8635;</button></div></div>';
-  document.getElementById('btnrevise').addEventListener('click', function() { goPanel(2); });
-  document.getElementById('btnrestart').addEventListener('click', restart);
-  document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
-  document.getElementById('qzactions').style.display = 'none';
+document.getElementById(‘btnsub’).disabled = true; document.getElementById(‘btnsub’).textContent = ‘Grading…’;
+var L = [‘A’,‘B’,‘C’,‘D’], mcC = 0, mcT = 0, sa = [];
+quizData.forEach(function(q, qi) {
+if (q.type === ‘mc’) {
+mcT++;
+var ci = L.indexOf(q.answer), r = document.getElementById(‘r’ + qi);
+if (!r.classList.contains(‘show’)) { document.querySelectorAll(’[data-qi=”’ + qi + ‘”]’).forEach(function(b, i) { b.disabled = true; if (i === ci) b.classList.add(‘correct’); }); r.classList.add(‘show’,‘wm’); r.textContent = ’Not answered. ’ + q.explanation; } else if (r.classList.contains(‘cm’)) mcC++;
+} else {
+var el = document.getElementById(‘sa’ + qi);
+sa.push({ qi: qi, q: q.question, a: el ? el.value.trim() : ‘’, sa: q.sampleAnswer });
 }
-
-function restart() {
-  src = ''; fbScore = 0; quizData = []; activeTab = 0;
-  document.getElementById('pin').value = '';
-  document.getElementById('usum').value = '';
-  document.getElementById('cc').textContent = '0';
-  document.getElementById('sc').textContent = '0';
-  clearFile();
-  switchTab(0);
-  goPanel(1);
-}
-
-document.getElementById('tab0').addEventListener('click', function() { switchTab(0); });
-document.getElementById('tab1').addEventListener('click', function() { switchTab(1); });
-document.getElementById('pin').addEventListener('input', function() { src = this.value; document.getElementById('cc').textContent = src.length; checkBtn1(); });
-document.getElementById('btn1').addEventListener('click', function() {
-  if (activeTab === 0) src = document.getElementById('pin').value.trim();
-  document.getElementById('src-prev').textContent = src.substring(0, 600) + (src.length > 600 ? '...' : '');
-  document.getElementById('usum').value = '';
-  document.getElementById('sc').textContent = '0';
-  document.getElementById('btnfb').disabled = true;
-  goPanel(2);
 });
-document.getElementById('usum').addEventListener('input', function() { var v = this.value; document.getElementById('sc').textContent = v.length; document.getElementById('btnfb').disabled = v.trim().length < 80; });
-document.getElementById('btnback2').addEventListener('click', function() { goPanel(1); });
-document.getElementById('btnfb').addEventListener('click', getFeedback);
-document.getElementById('btnback3').addEventListener('click', function() { goPanel(2); });
-document.getElementById('btnquiz').addEventListener('click', startQuiz);
-document.getElementById('btnsub').addEventListener('click', submitQuiz);
-document.getElementById('dz').addEventListener('dragover', function(e) { e.preventDefault(); this.classList.add('drag'); });
-document.getElementById('dz').addEventListener('dragleave', function() { this.classList.remove('drag'); });
-document.getElementById('dz').addEventListener('drop', function(e) { e.preventDefault(); this.classList.remove('drag'); if (e.dataTransfer.files[0]) readPDF(e.dataTransfer.files[0]); });
-document.getElementById('fileinput').addEventListener('change', function() { if (this.files[0]) readPDF(this.files[0]); });
+var saScore = 0;
+if (sa.length > 0) {
+try {
+var raw = await callAI(‘Grade these short answers 0-10 each. Respond ONLY with a raw JSON array, no markdown: [{“score”:N,“feedback”:”…”},…] ’ + sa.map(function(s, i) { return ‘Q’ + (i+1) + ‘: ’ + s.q + ’ Sample: ’ + s.sa + ’ Student: “’ + s.a + ‘”’; }).join(’ | ’), 600);
+JSON.parse(raw).forEach(function(g, i) {
+var qi = sa[i].qi; saScore += g.score;
+var ta = document.getElementById(‘sa’ + qi); if (ta) ta.disabled = true;
+var el = document.createElement(‘div’); el.className = ’qr show ’ + (g.score >= 6 ? ‘cm’ : ‘wm’); el.textContent = ’Score: ’ + g.score + ‘/10 - ’ + g.feedback;
+document.getElementById(‘q’ + qi).appendChild(el);
+});
+} catch(e) { saScore = sa.length * 5; }
+}
+var mp = mcT > 0 ? (mcC / mcT) * 100 : 100;
+var sp2 = sa.length > 0 ? (saScore / (sa.length * 10)) * 100 : 100;
+var tot = Math.round(sa.length > 0 ? (mp + sp2) / 2 : mp);
+var g = tot >= 90 ? ‘A’ : tot >= 80 ? ‘B’ : tot >= 70 ? ‘C’ : tot >= 60 ? ‘D’ : ‘F’;
+var msgs = { A:‘Outstanding!’, B:‘Great work!’, C:‘Good effort! Review the explanations.’, D:‘Keep at it!’, F:“Don’t give up!” };
+document.getElementById(‘result’).innerHTML = ‘<div class="fsc"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:16px">Quiz Complete</div><div class="fgr ' + g + '">’ + g + ‘</div><div class="fsub">’ + tot + ’% · ’ + msgs[g] + ‘</div><div class="fst"><div><div class="sv" style="color:var(--acc)">’ + (mcT > 0 ? mcC + ‘/’ + mcT : ‘—’) + ‘</div><div class="slb">MC Correct</div></div><div><div class="sv" style="color:var(--ac2)">’ + fbScore + ‘</div><div class="slb">Summary Score</div></div><div><div class="sv" style="color:var(--ok)">’ + tot + ‘%</div><div class="slb">Quiz Score</div></div></div><div class="row" style="justify-content:center"><button id="btnrevise" class="btn bs">Revise Summary</button> <button id="btnrestart" class="btn bp">New Session ↻</button></div></div>’;
+document.getElementById(‘btnrevise’).addEventListener(‘click’, function() { goPanel(2); });
+document.getElementById(‘btnrestart’).addEventListener(‘click’, function() { showScreen(‘history’); loadHistory(); });
+document.getElementById(‘result’).scrollIntoView({ behavior: ‘smooth’ });
+document.getElementById(‘qzactions’).style.display = ‘none’;
+if (fbData) await saveSession(fbData, tot);
+}
+
+// ── Wire up events ────────────────────────────────────────────────────
+document.getElementById(‘tab0’).addEventListener(‘click’, function() { switchTab(0); });
+document.getElementById(‘tab1’).addEventListener(‘click’, function() { switchTab(1); });
+document.getElementById(‘pin’).addEventListener(‘input’, function() { src = this.value; document.getElementById(‘cc’).textContent = src.length; checkBtn1(); });
+document.getElementById(‘btn1’).addEventListener(‘click’, function() {
+if (activeTab === 0) src = document.getElementById(‘pin’).value.trim();
+document.getElementById(‘src-prev’).textContent = src.substring(0, 600) + (src.length > 600 ? ‘…’ : ‘’);
+document.getElementById(‘usum’).value = ‘’; document.getElementById(‘sc’).textContent = ‘0’; document.getElementById(‘btnfb’).disabled = true;
+goPanel(2);
+});
+document.getElementById(‘usum’).addEventListener(‘input’, function() { var v = this.value; document.getElementById(‘sc’).textContent = v.length; document.getElementById(‘btnfb’).disabled = v.trim().length < 80; });
+document.getElementById(‘btnback2’).addEventListener(‘click’, function() { goPanel(1); });
+document.getElementById(‘btnfb’).addEventListener(‘click’, getFeedback);
+document.getElementById(‘btnback3’).addEventListener(‘click’, function() { goPanel(2); });
+document.getElementById(‘btnquiz’).addEventListener(‘click’, startQuiz);
+document.getElementById(‘btnsub’).addEventListener(‘click’, submitQuiz);
+document.getElementById(‘dz’).addEventListener(‘dragover’, function(e) { e.preventDefault(); this.classList.add(‘drag’); });
+document.getElementById(‘dz’).addEventListener(‘dragleave’, function() { this.classList.remove(‘drag’); });
+document.getElementById(‘dz’).addEventListener(‘drop’, function(e) { e.preventDefault(); this.classList.remove(‘drag’); if (e.dataTransfer.files[0]) readPDF(e.dataTransfer.files[0]); });
+document.getElementById(‘fileinput’).addEventListener(‘change’, function() { if (this.files[0]) readPDF(this.files[0]); });
+
+// ── Enter key on auth ─────────────────────────────────────────────────
+document.getElementById(‘auth-pass’).addEventListener(‘keydown’, function(e) { if (e.key === ‘Enter’) document.getElementById(‘auth-btn’).click(); });
+
+// ── Init ──────────────────────────────────────────────────────────────
+checkSession();
 </script>
+
 </body>
 </html>
