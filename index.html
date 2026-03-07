@@ -121,14 +121,15 @@ textarea:focus{border-color:var(–acc)}
 <div id="screen-auth" class="auth-wrap" style="display:flex">
   <div class="auth-card">
     <div class="auth-logo">Summar<span>AI</span></div>
-    <div style="display:flex;gap:4px;background:#1e1e24;border-radius:10px;padding:4px;margin-bottom:24px">
-      <button id="tab-signin" onclick="setAuthMode('signin')" style="flex:1;padding:8px;border-radius:7px;border:none;background:#16161a;color:#f0f0f5;font-family:system-ui,sans-serif;font-size:14px;font-weight:600;cursor:pointer">Sign In</button>
-      <button id="tab-signup" onclick="setAuthMode('signup')" style="flex:1;padding:8px;border-radius:7px;border:none;background:transparent;color:#888899;font-family:system-ui,sans-serif;font-size:14px;font-weight:600;cursor:pointer">Sign Up</button>
-    </div>
+    <div style="margin-bottom:24px;font-size:13px;color:#888899">Sign in or create a new account</div>
     <div class="auth-err" id="auth-err"></div>
     <input class="inp" type="email" id="auth-email" placeholder="Email address" autocomplete="email">
     <input class="inp" type="password" id="auth-pass" placeholder="Password" autocomplete="current-password">
-    <button class="btn bp" id="auth-btn" onclick="doAuth()" style="width:100%;justify-content:center">Sign In</button>
+    <label style="display:flex;align-items:center;gap:10px;margin-bottom:16px;cursor:pointer;font-size:14px;color:#888899">
+      <input type="checkbox" id="is-signup" style="width:18px;height:18px;cursor:pointer">
+      I am a new user (Sign Up)
+    </label>
+    <button class="btn bp" id="auth-btn" onclick="doAuth()" style="width:100%;justify-content:center">Continue</button>
   </div>
 </div>
 
@@ -311,19 +312,20 @@ function setAuthMode(mode) {
 async function doAuth() {
   var email = document.getElementById('auth-email').value.trim();
   var pass = document.getElementById('auth-pass').value;
+  var isSignup = document.getElementById('is-signup').checked;
   var errEl = document.getElementById('auth-err');
   var btn = document.getElementById('auth-btn');
   errEl.style.display = 'none';
   if (!email || !pass) { errEl.style.color = '#f06060'; errEl.textContent = 'Please enter your email and password.'; errEl.style.display = 'block'; return; }
   btn.disabled = true; btn.textContent = 'Please wait...';
-  if (authMode === 'signup') {
+  if (isSignup) {
     var res = await sbFetch('/auth/v1/signup', 'POST', { email: email, password: pass });
     if (res.status === 200 || res.status === 201) {
       errEl.style.color = '#60f0a8'; errEl.textContent = 'Account created! Check your email to confirm, then sign in.'; errEl.style.display = 'block';
     } else {
       errEl.style.color = '#f06060'; errEl.textContent = (res.data && res.data.msg) || (res.data && res.data.error_description) || 'Sign up failed.'; errEl.style.display = 'block';
     }
-    btn.disabled = false; btn.textContent = 'Create Account';
+    btn.disabled = false; btn.textContent = 'Continue';
   } else {
     var res = await sbFetch('/auth/v1/token?grant_type=password', 'POST', { email: email, password: pass });
     if (res.status === 200 && res.data && res.data.access_token) {
@@ -336,7 +338,7 @@ async function doAuth() {
     } else {
       errEl.style.color = '#f06060'; errEl.textContent = (res.data && res.data.error_description) || 'Invalid email or password.'; errEl.style.display = 'block';
     }
-    btn.disabled = false; btn.textContent = 'Sign In';
+    btn.disabled = false; btn.textContent = 'Continue';
   }
 };
 
@@ -653,7 +655,6 @@ document.getElementById(‘fileinput’).addEventListener(‘change’, function
 document.getElementById(‘auth-pass’).addEventListener(‘keydown’, function(e) { if (e.key === ‘Enter’) document.getElementById(‘auth-btn’).click(); });
 
 // ── Init ──────────────────────────────────────────────────────────────
-setAuthMode(‘signin’);
 checkSession();
 </script>
 
