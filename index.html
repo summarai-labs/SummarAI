@@ -129,7 +129,7 @@ textarea:focus{border-color:var(–acc)}
       <input type="checkbox" id="is-signup" style="width:18px;height:18px;cursor:pointer">
       I am a new user (Sign Up)
     </label>
-    <button class="btn bp" id="auth-btn" onclick="doAuth()" style="width:100%;justify-content:center">Continue</button>
+    <button class="btn bp" id="auth-btn" style="width:100%;justify-content:center">Continue</button>
   </div>
 </div>
 
@@ -652,7 +652,8 @@ document.getElementById(‘dz’).addEventListener(‘drop’, function(e) { e.p
 document.getElementById(‘fileinput’).addEventListener(‘change’, function() { if (this.files[0]) readPDF(this.files[0]); });
 
 // ── Enter key on auth ─────────────────────────────────────────────────
-document.getElementById(‘auth-pass’).addEventListener(‘keydown’, function(e) { if (e.key === ‘Enter’) document.getElementById(‘auth-btn’).click(); });
+document.getElementById(‘auth-pass’).addEventListener(‘keydown’, function(e) { if (e.key === ‘Enter’) doAuth(); });
+document.getElementById(‘auth-btn’).addEventListener(‘click’, doAuth);
 
 // ── Init ──────────────────────────────────────────────────────────────
 checkSession();
