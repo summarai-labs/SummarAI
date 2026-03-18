@@ -110,9 +110,12 @@ textarea:focus{border-color:#c8f060}
     <div class="aerr" id="AE"></div>
     <div class="aok" id="AOK"></div>
     <input class="ainp" type="email" id="AEM" placeholder="Email address" autocomplete="email">
-    <div style="position:relative;margin-bottom:12px">
+    <div style="position:relative;margin-bottom:4px">
       <input class="ainp" type="password" id="APW" placeholder="Password" autocomplete="current-password" style="margin-bottom:0;padding-right:48px">
       <button id="PWSHOW" type="button" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#888899;font-size:18px;padding:4px;line-height:1">&#128065;</button>
+    </div>
+    <div style="text-align:right;margin-bottom:16px">
+      <button id="FWBTN" type="button" style="background:none;border:none;color:#888899;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:0">Forgot password?</button>
     </div>
     <label class="achk"><input type="checkbox" id="ANEW"> New user? Create account</label>
     <button class="btn bp" id="AGO" style="width:100%;justify-content:center;font-size:15px;padding:13px">Continue</button>
@@ -291,9 +294,35 @@ async function sbReq(path, method, body) {
 }
 
 function initAuth() {
+  // Check if this is a password reset redirect
+  var hash = window.location.hash;
+  if (hash && hash.includes('type=recovery') && hash.includes('access_token')) {
+    var params = new URLSearchParams(hash.slice(1));
+    var token = params.get('access_token');
+    if (token) { showResetForm(token); return; }
+  }
   try { utoken=localStorage.getItem('sat'); uid=localStorage.getItem('suid'); uemail=localStorage.getItem('sem'); } catch(e){}
   if (utoken && uid) { g('HEM').textContent=uemail||''; screen('H'); loadHistory(); }
   else screen('A');
+}
+
+function showResetForm(token) {
+  var card = document.querySelector('.acard');
+  card.innerHTML = '<div class="alogo">Summar<span style="color:#c8f060">AI</span></div><div class="asub">Choose a new password</div><div class="aerr" id="AE2" style="display:none;background:rgba(240,96,96,.1);border:1px solid rgba(240,96,96,.3);border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:12px;color:#f06060"></div><div class="aok" id="AOK2" style="display:none;background:rgba(96,240,168,.1);border:1px solid rgba(96,240,168,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#60f0a8;margin-bottom:12px"></div><div style="position:relative;margin-bottom:12px"><input class="ainp" type="password" id="NEWPW" placeholder="New password" style="margin-bottom:0;padding-right:48px;font-size:16px"><button type="button" id="NEWPWSHOW" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#888899;font-size:18px;padding:4px;line-height:1">&#128065;</button></div><button class="btn bp" id="RESETBTN" style="width:100%;justify-content:center;font-size:15px;padding:13px">Set New Password</button>';
+  g('NEWPWSHOW').addEventListener('click', function() { var i=g('NEWPW'); var s=i.type==='text'; i.type=s?'password':'text'; this.style.color=s?'#888899':'#c8f060'; });
+  g('RESETBTN').addEventListener('click', async function() {
+    var pw = g('NEWPW').value;
+    var ae2=g('AE2'), aok2=g('AOK2');
+    ae2.style.display='none'; aok2.style.display='none';
+    if (pw.length < 6) { ae2.textContent='Password must be at least 6 characters.'; ae2.style.display='block'; return; }
+    this.disabled=true; this.textContent='Saving...';
+    var res = await fetch(SB_URL+'/auth/v1/user', {method:'PUT', headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+token}, body:JSON.stringify({password:pw})});
+    if (res.ok) {
+      aok2.textContent='Password updated! You can now sign in.'; aok2.style.display='block';
+      setTimeout(function(){ window.location.hash=''; window.location.reload(); }, 2000);
+    } else { ae2.textContent='Could not update password. Try again.'; ae2.style.display='block'; }
+    this.disabled=false; this.textContent='Set New Password';
+  });
 }
 
 g('AGO').addEventListener('touchend', function(e) { e.preventDefault(); doAuth(); });
@@ -327,6 +356,18 @@ g('PWSHOW').addEventListener('click', function() {
   var showing = inp.type === 'text';
   inp.type = showing ? 'password' : 'text';
   this.style.color = showing ? '#888899' : '#c8f060';
+});
+
+g('FWBTN').addEventListener('click', async function() {
+  var email = g('AEM').value.trim();
+  var ae = g('AE'), aok = g('AOK');
+  ae.style.display='none'; aok.style.display='none';
+  if (!email) { ae.textContent='Please enter your email address first.'; ae.style.display='block'; return; }
+  this.disabled=true; this.textContent='Sending...';
+  var r = await sbReq('/auth/v1/recover','POST',{email:email});
+  if (r.ok) { aok.textContent='Password reset email sent! Check your inbox.'; aok.style.display='block'; }
+  else { ae.textContent='Could not send reset email. Try again.'; ae.style.display='block'; }
+  this.disabled=false; this.textContent='Forgot password?';
 });
 
 function signOut() {
