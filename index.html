@@ -320,7 +320,7 @@ function showResetForm(token) {
     if (res.ok) {
       aok2.textContent='Password updated! You can now sign in.'; aok2.style.display='block';
       setTimeout(function(){ window.location.hash=''; window.location.reload(); }, 2000);
-    } else { ae2.textContent='Could not update password. Try again.'; ae2.style.display='block'; }
+    } else { ae2.textContent='Please choose a different password than your previous one.'; ae2.style.display='block'; }
     this.disabled=false; this.textContent='Set New Password';
   });
 }
