@@ -216,19 +216,20 @@ textarea:focus{border-color:#c8f060}
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+<div id="DBG" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.9);color:#0f0;font-family:monospace;font-size:12px;padding:10px;max-height:150px;overflow-y:auto;z-index:9999"></div>
+<script>
+var DBG = document.getElementById('DBG');
+function dbg(msg) { console.log(msg); DBG.innerHTML += '<div>' + msg + '</div>'; DBG.scrollTop=DBG.scrollHeight; }
+dbg('1. Page loaded');
+window.onerror = function(msg,src,line) { dbg('ERROR: '+msg+' line:'+line); return false; };
+</script>
+<script>dbg("2. Loading pdfjs...");</script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js" onload="dbg('3. pdfjs loaded')" onerror="dbg('3. pdfjs FAILED')"></script>
 <script>
 if (typeof pdfjsLib !== 'undefined') pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
 
 
-var DBG = document.getElementById('DBG');
-function dbg(msg) { 
-  console.log('[DBG]', msg); 
-  DBG.style.display='block';
-  DBG.innerHTML += '<div>' + msg + '</div>';
-  DBG.scrollTop = DBG.scrollHeight;
-}
-dbg('Script started');
+dbg('2. Main script started');
 
 var SB_URL = 'https://rmxckkpteblnvjdgugcm.supabase.co';
 var SB_KEY = 'sb_publishable_BjaS3DNgdawXHXwU9oy0sQ_LFNrSnRb';
@@ -458,6 +459,6 @@ dbg('Calling initAuth');
 initAuth();
 dbg('initAuth done');
 </script>
-<div id="DBG" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.85);color:#0f0;font-family:monospace;font-size:11px;padding:8px;max-height:120px;overflow-y:auto;z-index:9999;display:none"></div>
+
 </body>
 </html>
