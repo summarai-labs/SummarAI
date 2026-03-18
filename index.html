@@ -83,7 +83,7 @@ textarea:focus{border-color:#c8f060}
 .alogo{font-family:"Syne",sans-serif;font-weight:800;font-size:26px;margin-bottom:4px;color:#f0f0f5}
 .alogo span{color:#c8f060}
 .asub{color:#888899;font-size:13px;margin-bottom:28px}
-.ainp{width:100%;background:#1e1e24;border:1px solid #2a2a35;border-radius:10px;color:#f0f0f5;font-family:"DM Sans",sans-serif;font-size:15px;padding:13px 16px;outline:none;margin-bottom:12px;-webkit-appearance:none}
+.ainp{width:100%;background:#1e1e24;border:1px solid #2a2a35;border-radius:10px;color:#f0f0f5;font-family:"DM Sans",sans-serif;font-size:16px;padding:13px 16px;outline:none;margin-bottom:12px;-webkit-appearance:none}
 .ainp:focus{border-color:#c8f060}
 .aerr{background:rgba(240,96,96,.1);border:1px solid rgba(240,96,96,.3);border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:12px;display:none}
 .aok{background:rgba(96,240,168,.1);border:1px solid rgba(96,240,168,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#60f0a8;margin-bottom:12px;display:none}
@@ -110,7 +110,10 @@ textarea:focus{border-color:#c8f060}
     <div class="aerr" id="AE"></div>
     <div class="aok" id="AOK"></div>
     <input class="ainp" type="email" id="AEM" placeholder="Email address" autocomplete="email">
-    <input class="ainp" type="password" id="APW" placeholder="Password" autocomplete="current-password">
+    <div style="position:relative;margin-bottom:12px">
+      <input class="ainp" type="password" id="APW" placeholder="Password" autocomplete="current-password" style="margin-bottom:0;padding-right:48px">
+      <button id="PWSHOW" type="button" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#888899;font-size:18px;padding:4px;line-height:1">&#128065;</button>
+    </div>
     <label class="achk"><input type="checkbox" id="ANEW"> New user? Create account</label>
     <button class="btn bp" id="AGO" style="width:100%;justify-content:center;font-size:15px;padding:13px">Continue</button>
   </div>
@@ -160,7 +163,7 @@ textarea:focus{border-color:#c8f060}
         </div>
         <div id="TP0">
           <textarea id="PIN" placeholder="Paste an article, chapter, or any passage here..."></textarea>
-          <div class="cc"><span id="CC">0</span> characters</div>
+          <div class="cc"><span id="CC">0</span> / min 600 characters</div>
         </div>
         <div id="TP1" style="display:none">
           <div class="dz" id="DZ">
@@ -181,7 +184,7 @@ textarea:focus{border-color:#c8f060}
         <div class="tp"><strong>Source Text</strong><span id="SPREV"></span></div>
         <label style="font-size:13px;color:#888899;font-weight:500;display:block;margin-bottom:8px">Your Summary</label>
         <textarea id="USUM" placeholder="Write the main ideas and key points..." style="min-height:200px"></textarea>
-        <div class="cc"><span id="SC">0</span> characters</div>
+        <div class="cc"><span id="SC">0</span> / min 150 characters</div>
         <div id="SUME" class="err" style="display:none">Please write at least 80 characters.</div>
         <div class="row" style="margin-top:20px">
           <button class="btn bg" id="BB2">&#8592; Back</button>
@@ -216,20 +219,12 @@ textarea:focus{border-color:#c8f060}
   </div>
 </div>
 
-<div id="DBG" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.9);color:#0f0;font-family:monospace;font-size:12px;padding:10px;max-height:150px;overflow-y:auto;z-index:9999"></div>
-<script>
-var DBG = document.getElementById('DBG');
-function dbg(msg) { console.log(msg); DBG.innerHTML += '<div>' + msg + '</div>'; DBG.scrollTop=DBG.scrollHeight; }
-dbg('1. Page loaded');
-window.onerror = function(msg,src,line) { dbg('ERROR: '+msg+' line:'+line); return false; };
-</script>
-<script>dbg("2. Loading pdfjs...");</script>
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js" onload="dbg('3. pdfjs loaded')" onerror="dbg('3. pdfjs FAILED')"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
 <script>
 if (typeof pdfjsLib !== 'undefined') pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
 
-
-dbg('2. Main script started');
 
 var SB_URL = 'https://rmxckkpteblnvjdgugcm.supabase.co';
 var SB_KEY = 'sb_publishable_BjaS3DNgdawXHXwU9oy0sQ_LFNrSnRb';
@@ -301,10 +296,9 @@ function initAuth() {
   else screen('A');
 }
 
-dbg('Attaching AGO listeners');
 g('AGO').addEventListener('touchend', function(e) { e.preventDefault(); doAuth(); });
 g('AGO').addEventListener('click', function() { doAuth(); });
-async function doAuth() { dbg('doAuth called');
+async function doAuth() {
   var email=g('AEM').value.trim(), pass=g('APW').value, isNew=g('ANEW').checked;
   var ae=g('AE'), aok=g('AOK');
   ae.style.display='none'; aok.style.display='none';
@@ -328,6 +322,12 @@ async function doAuth() { dbg('doAuth called');
 }
 
 g('APW').addEventListener('keydown', function(e){ if(e.key==='Enter') g('AGO').click(); });
+g('PWSHOW').addEventListener('click', function() {
+  var inp = g('APW');
+  var showing = inp.type === 'text';
+  inp.type = showing ? 'password' : 'text';
+  this.style.color = showing ? '#888899' : '#c8f060';
+});
 
 function signOut() {
   utoken=null;uid=null;uemail=null;
@@ -455,9 +455,7 @@ g('DZ').addEventListener('dragleave',function(){this.style.borderColor='#2a2a35'
 g('DZ').addEventListener('drop',function(e){e.preventDefault();this.style.borderColor='#2a2a35';if(e.dataTransfer.files[0])readPDF(e.dataTransfer.files[0]);});
 g('FI').addEventListener('change',function(){if(this.files[0])readPDF(this.files[0]);});
 
-dbg('Calling initAuth');
 initAuth();
-dbg('initAuth done');
 </script>
 
 </body>
