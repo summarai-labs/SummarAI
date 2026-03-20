@@ -200,6 +200,7 @@ textarea:focus{border-color:#c8f060}
         <div class="tabs">
           <button class="tab on" id="T0">Paste Text</button>
           <button class="tab" id="T1">Upload PDF</button>
+          <button class="tab" id="T2">Photo</button>
         </div>
         <div id="TP0">
           <textarea id="PIN" placeholder="Paste an article, chapter, or any passage here..."></textarea>
@@ -212,6 +213,14 @@ textarea:focus{border-color:#c8f060}
             <div style="color:#888899;font-size:14px"><strong style="color:#f0f0f5">Drop a PDF</strong> or tap to browse</div>
           </div>
           <div id="FINF" style="display:none"></div>
+        </div>
+        <div id="TP2" style="display:none">
+          <div class="dz" id="PHOTODZ" style="cursor:pointer" onclick="document.getElementById('PHOTOINP').click()">
+            <input type="file" id="PHOTOINP" accept="image/*" capture="environment" style="display:none">
+            <div style="font-size:36px;margin-bottom:10px">&#128247;</div>
+            <div style="color:#888899;font-size:14px"><strong style="color:#f0f0f5">Take a photo or upload an image</strong><br>AI will extract the text for you</div>
+          </div>
+          <div id="PHOTOINF" style="display:none"></div>
         </div>
         <div id="P1E" class="err" style="display:none"></div>
         <div style="margin-top:20px"><button class="btn bp" id="B1" disabled>Continue &#8594;</button></div>
@@ -289,14 +298,15 @@ function goPanel(n) {
 
 function switchTab(n) {
   activeTab=n;
-  g('T0').classList.toggle('on', n===0); g('T1').classList.toggle('on', n===1);
-  g('TP0').style.display=n===0?'block':'none'; g('TP1').style.display=n===1?'block':'none';
+  g('T0').classList.toggle('on', n===0); g('T1').classList.toggle('on', n===1); g('T2').classList.toggle('on', n===2);
+  g('TP0').style.display=n===0?'block':'none'; g('TP1').style.display=n===1?'block':'none'; g('TP2').style.display=n===2?'block':'none';
   checkB1();
 }
 
 function checkB1() { g('B1').disabled = src.trim().length < 100; }
 
 function clearFile() { src=''; g('DZ').style.display='block'; g('FINF').style.display='none'; checkB1(); }
+function clearPhoto() { src=''; g('PHOTODZ').style.display='block'; g('PHOTOINF').style.display='none'; checkB1(); }
 
 function readPDF(file) {
   if (typeof pdfjsLib==='undefined') { g('P1E').textContent='PDF reader not loaded.'; g('P1E').style.display='block'; return; }
@@ -315,6 +325,42 @@ function readPDF(file) {
     }).catch(function(err){fi.style.display='none';g('DZ').style.display='block';g('P1E').textContent='Could not read PDF: '+err.message;g('P1E').style.display='block';});
   };
   r.readAsArrayBuffer(file);
+}
+
+async function readPhoto(file) {
+  g('PHOTODZ').style.display='none'; g('P1E').style.display='none';
+  var pi=g('PHOTOINF'); pi.style.display='block';
+  pi.innerHTML='<div class="fbox"><div class="sp"></div><span style="color:#888899">&nbsp;Reading image with AI&hellip;</span></div>';
+  try {
+    var base64 = await new Promise(function(res, rej) {
+      var r=new FileReader();
+      r.onload=function(e){ res(e.target.result.split(',')[1]); };
+      r.onerror=rej;
+      r.readAsDataURL(file);
+    });
+    var response = await fetch('https://bananaman-mrnibls-summarai-proxy.hf.space', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:2000,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:file.type,data:base64}},
+          {type:'text',text:'Extract all the text from this image exactly as it appears. Return only the extracted text, nothing else.'}
+        ]}]
+      })
+    });
+    var d = await response.json();
+    if (!d.content) throw new Error('Could not read image');
+    src = d.content.map(function(b){return b.text||'';}).join('').trim();
+    if (src.length < 50) { pi.style.display='none'; g('PHOTODZ').style.display='block'; g('P1E').textContent='Could not extract enough text from image. Try a clearer photo.'; g('P1E').style.display='block'; return; }
+    pi.innerHTML='<div class="fbox"><span style="font-size:22px">&#128247;</span><div style="flex:1"><div style="font-weight:500;font-size:14px">'+file.name+'</div><div style="color:#888899;font-size:12px">~'+src.split(/\s+/).length+' words extracted</div></div><button id="CLRPHOTO" style="background:none;border:none;color:#888899;cursor:pointer;font-size:18px;padding:4px">&#x2715;</button></div>';
+    g('CLRPHOTO').addEventListener('click', function(){ src=''; pi.style.display='none'; g('PHOTODZ').style.display='block'; checkB1(); });
+    checkB1();
+  } catch(e) {
+    pi.style.display='none'; g('PHOTODZ').style.display='block';
+    g('P1E').textContent='Error reading image: '+e.message; g('P1E').style.display='block';
+  }
 }
 
 async function callAI(prompt, maxTok) {
@@ -538,6 +584,7 @@ async function submitQuiz(){
 // Wire up all buttons
 g('T0').addEventListener('click',function(){switchTab(0);});
 g('T1').addEventListener('click',function(){switchTab(1);});
+g('T2').addEventListener('click',function(){switchTab(2);});
 g('PIN').addEventListener('input',function(){src=this.value;g('CC').textContent=src.length;checkB1();});
 g('B1').addEventListener('click',function(){if(activeTab===0)src=g('PIN').value.trim();g('SPREV').textContent=src.substring(0,600)+(src.length>600?'...':'');g('USUM').value='';g('SC').textContent='0';g('BFB').disabled=true;goPanel(2);});
 g('USUM').addEventListener('input',function(){var v=this.value;g('SC').textContent=v.length;g('BFB').disabled=v.trim().length<80;});
@@ -546,12 +593,13 @@ g('BFB').addEventListener('click',getFeedback);
 g('BB3').addEventListener('click',function(){goPanel(2);});
 g('BQZ').addEventListener('click',startQuiz);
 g('BSUB').addEventListener('click',submitQuiz);
-g('HNEW').addEventListener('click',function(){src='';fbData=null;quizData=[];sessionId=null;activeTab=0;g('PIN').value='';g('USUM').value='';g('CC').textContent='0';g('SC').textContent='0';clearFile();switchTab(0);goPanel(1);screen('M');});
+g('HNEW').addEventListener('click',function(){src='';fbData=null;quizData=[];sessionId=null;activeTab=0;g('PIN').value='';g('USUM').value='';g('CC').textContent='0';g('SC').textContent='0';clearFile();clearPhoto();switchTab(0);goPanel(1);screen('M');});
 g('MHIST').addEventListener('click',function(){screen('H');loadHistory();});
 g('DZ').addEventListener('dragover',function(e){e.preventDefault();this.style.borderColor='#c8f060';});
 g('DZ').addEventListener('dragleave',function(){this.style.borderColor='#2a2a35';});
 g('DZ').addEventListener('drop',function(e){e.preventDefault();this.style.borderColor='#2a2a35';if(e.dataTransfer.files[0])readPDF(e.dataTransfer.files[0]);});
 g('FI').addEventListener('change',function(){if(this.files[0])readPDF(this.files[0]);});
+g('PHOTOINP').addEventListener('change',function(){if(this.files[0])readPhoto(this.files[0]);});
 
 initAuth();
 </script>
