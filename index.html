@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -144,34 +145,37 @@ textarea:focus{border-color:#c8f060}
     <div class="ct" style="margin-bottom:4px">Your Sessions</div>
     <div class="cs">Tap a session to review, or start a new one.</div>
 
-    <div style="background:#16161a;border:1px solid #2a2a35;border-radius:16px;padding:24px;margin:20px 0">
-      <div style="font-size:18px;font-weight:700;font-family:Syne,sans-serif;color:#f0f0f5;margin-bottom:6px">Learn smarter, not harder.</div>
-      <div style="font-size:14px;color:#888899;margin-bottom:20px">Paste any text, summarize it in your own words, get AI feedback, and test yourself — all in one place.</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 1</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Load text</div>
-          <div style="font-size:12px;color:#888899">Paste or upload a PDF</div>
-        </div>
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 2</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Summarize</div>
-          <div style="font-size:12px;color:#888899">Write it in your own words</div>
-        </div>
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 3</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Get feedback</div>
-          <div style="font-size:12px;color:#888899">AI scores your summary</div>
-        </div>
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 4</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Quiz yourself</div>
-          <div style="font-size:12px;color:#888899">Test your understanding</div>
-        </div>
-      </div>
+```
+<div style="background:#16161a;border:1px solid #2a2a35;border-radius:16px;padding:24px;margin:20px 0">
+  <div style="font-size:18px;font-weight:700;font-family:Syne,sans-serif;color:#f0f0f5;margin-bottom:6px">Learn smarter, not harder.</div>
+  <div style="font-size:14px;color:#888899;margin-bottom:20px">Paste any text, summarize it in your own words, get AI feedback, and test yourself — all in one place.</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
+      <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 1</div>
+      <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Load text</div>
+      <div style="font-size:12px;color:#888899">Paste or upload a PDF</div>
     </div>
+    <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
+      <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 2</div>
+      <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Summarize</div>
+      <div style="font-size:12px;color:#888899">Write it in your own words</div>
+    </div>
+    <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
+      <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 3</div>
+      <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Get feedback</div>
+      <div style="font-size:12px;color:#888899">AI scores your summary</div>
+    </div>
+    <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
+      <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 4</div>
+      <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Quiz yourself</div>
+      <div style="font-size:12px;color:#888899">Test your understanding</div>
+    </div>
+  </div>
+</div>
 
-    <div id="HL" style="margin-top:20px"></div>
+<div id="HL" style="margin-top:20px"></div>
+```
+
   </div>
 </div>
 
@@ -259,9 +263,8 @@ textarea:focus{border-color:#c8f060}
   </div>
 </div>
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+
 <script>
 if (typeof pdfjsLib !== 'undefined') pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
 
@@ -415,6 +418,7 @@ g('PWSHOW').addEventListener('click', function() {
   this.style.color = showing ? '#888899' : '#c8f060';
 });
 
+g('GOOGLEBTN').addEventListener('touchend', function(e) { e.preventDefault(); window.location.href = 'https://rmxckkpteblnvjdgugcm.supabase.co/auth/v1/authorize?provider=google&redirect_to=https://summarai-labs.github.io/SummarAI/'; });
 g('GOOGLEBTN').addEventListener('click', async function() {
   var res = await sbReq('/auth/v1/authorize?provider=google&redirect_to=https://summarai-labs.github.io/SummarAI/', 'GET');
   if (res.status === 200 && res.data && res.data.url) {
@@ -512,56 +516,60 @@ async function startQuiz() {
     quizData.forEach(function(q,qi){
       if(q.type==='mc'){html+='<div class="qq" id="q'+qi+'"><div class="qn">Q'+(qi+1)+' &middot; Multiple Choice</div><div class="qt">'+q.question+'</div><div class="opts">';q.options.forEach(function(opt,oi){html+='<button class="opt" data-qi="'+qi+'" data-oi="'+oi+'"><span class="ol">'+L[oi]+'</span><span>'+opt.replace(/^[A-D]\)\s*/,'')+'</span></button>';});html+='</div><div class="qr" id="r'+qi+'"></div></div>';}
       else{html+='<div class="qq" id="q'+qi+'"><div class="qn">Q'+(qi+1)+' &middot; Short Answer</div><div class="qt">'+q.question+'</div><div class="saw"><textarea id="sa'+qi+'" placeholder="Type your answer..."></textarea></div></div>';}
-    });
-    g('QZC').innerHTML=html;
-    document.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+this.dataset.qi,+this.dataset.oi);});});
-    g('QZC').style.display='block'; g('QZA').style.display='flex';
-  } catch(e){g('QZC').innerHTML='<div class="err">Could not generate quiz: '+e.message+'</div>';g('QZC').style.display='block';}
-  g('QZL').style.display='none';
+
+```
+});
+g('QZC').innerHTML=html;
+document.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){pick(+this.dataset.qi,+this.dataset.oi);});});
+g('QZC').style.display='block'; g('QZA').style.display='flex';
+```
+
+} catch(e){g(‘QZC’).innerHTML=’<div class="err">Could not generate quiz: ‘+e.message+’</div>’;g(‘QZC’).style.display=‘block’;}
+g(‘QZL’).style.display=‘none’;
 }
 
 function pick(qi,sel){
-  var q=quizData[qi],L=['A','B','C','D'],ci=L.indexOf(q.answer);
-  document.querySelectorAll('[data-qi="'+qi+'"]').forEach(function(b,i){b.disabled=true;if(i===ci)b.classList.add('correct');else if(i===sel)b.classList.add('wrong');});
-  var r=g('r'+qi); r.classList.add('show',sel===ci?'cm':'wm'); r.textContent=(sel===ci?'Correct! ':'Not quite. ')+q.explanation;
+var q=quizData[qi],L=[‘A’,‘B’,‘C’,‘D’],ci=L.indexOf(q.answer);
+document.querySelectorAll(’[data-qi=”’+qi+’”]’).forEach(function(b,i){b.disabled=true;if(i===ci)b.classList.add(‘correct’);else if(i===sel)b.classList.add(‘wrong’);});
+var r=g(‘r’+qi); r.classList.add(‘show’,sel===ci?‘cm’:‘wm’); r.textContent=(sel===ci?’Correct! ’:’Not quite. ’)+q.explanation;
 }
 
 async function submitQuiz(){
-  g('BSUB').disabled=true; g('BSUB').textContent='Grading...';
-  var L=['A','B','C','D'],mcC=0,mcT=0,sa=[];
-  quizData.forEach(function(q,qi){
-    if(q.type==='mc'){mcT++;var ci=L.indexOf(q.answer),r=g('r'+qi);if(!r.classList.contains('show')){document.querySelectorAll('[data-qi="'+qi+'"]').forEach(function(b,i){b.disabled=true;if(i===ci)b.classList.add('correct');});r.classList.add('show','wm');r.textContent='Not answered. '+q.explanation;}else if(r.classList.contains('cm'))mcC++;}
-    else{var el=g('sa'+qi);sa.push({qi:qi,q:q.question,a:el?el.value.trim():'',sa:q.sampleAnswer});}
-  });
-  var saScore=0;
-  if(sa.length>0){try{var raw=await callAI('Grade these short answers 0-10 each. Respond ONLY with raw JSON array, no markdown: [{"score":N,"feedback":"..."},...] '+sa.map(function(s,i){return 'Q'+(i+1)+': '+s.q+' Sample: '+s.sa+' Student: "'+s.a+'"';}).join(' | '),600);JSON.parse(raw).forEach(function(gr,i){var qi=sa[i].qi;saScore+=gr.score;var ta=g('sa'+qi);if(ta)ta.disabled=true;var el=document.createElement('div');el.className='qr show '+(gr.score>=6?'cm':'wm');el.textContent='Score: '+gr.score+'/10 - '+gr.feedback;g('q'+qi).appendChild(el);});}catch(e){saScore=sa.length*5;}}
-  var mp=mcT>0?(mcC/mcT)*100:100, sp2=sa.length>0?(saScore/(sa.length*10))*100:100, tot=Math.round(sa.length>0?(mp+sp2)/2:mp);
-  var gr=tot>=90?'A':tot>=80?'B':tot>=70?'C':tot>=60?'D':'F';
-  var msgs={A:'Outstanding!',B:'Great work!',C:'Good effort!',D:'Keep at it!',F:"Don't give up!"};
-  g('RES').innerHTML='<div class="fsc"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888899;margin-bottom:16px">Quiz Complete</div><div class="fgr '+gr+'">'+gr+'</div><div class="fsub">'+tot+'% &middot; '+msgs[gr]+'</div><div class="fst"><div><div class="sv" style="color:#c8f060">'+(mcT>0?mcC+'/'+mcT:'&mdash;')+'</div><div class="slb">MC Correct</div></div><div><div class="sv" style="color:#60b8f0">'+fbScore+'</div><div class="slb">Summary Score</div></div><div><div class="sv" style="color:#60f0a8">'+tot+'%</div><div class="slb">Quiz Score</div></div></div><div class="row" style="justify-content:center"><button id="BREV" class="btn bs">Revise</button>&nbsp;<button id="BRST" class="btn bp">New Session &#8635;</button></div></div>';
-  g('BREV').addEventListener('click',function(){goPanel(2);});
-  g('BRST').addEventListener('click',function(){screen('H');loadHistory();});
-  g('RES').scrollIntoView({behavior:'smooth'}); g('QZA').style.display='none';
-  if(fbData) await saveSession(fbData,tot);
+g(‘BSUB’).disabled=true; g(‘BSUB’).textContent=‘Grading…’;
+var L=[‘A’,‘B’,‘C’,‘D’],mcC=0,mcT=0,sa=[];
+quizData.forEach(function(q,qi){
+if(q.type===‘mc’){mcT++;var ci=L.indexOf(q.answer),r=g(‘r’+qi);if(!r.classList.contains(‘show’)){document.querySelectorAll(’[data-qi=”’+qi+’”]’).forEach(function(b,i){b.disabled=true;if(i===ci)b.classList.add(‘correct’);});r.classList.add(‘show’,‘wm’);r.textContent=‘Not answered. ‘+q.explanation;}else if(r.classList.contains(‘cm’))mcC++;}
+else{var el=g(‘sa’+qi);sa.push({qi:qi,q:q.question,a:el?el.value.trim():’’,sa:q.sampleAnswer});}
+});
+var saScore=0;
+if(sa.length>0){try{var raw=await callAI(‘Grade these short answers 0-10 each. Respond ONLY with raw JSON array, no markdown: [{“score”:N,“feedback”:”…”},…] ‘+sa.map(function(s,i){return ‘Q’+(i+1)+’: ‘+s.q+’ Sample: ‘+s.sa+’ Student: “’+s.a+’”’;}).join(’ | ‘),600);JSON.parse(raw).forEach(function(gr,i){var qi=sa[i].qi;saScore+=gr.score;var ta=g(‘sa’+qi);if(ta)ta.disabled=true;var el=document.createElement(‘div’);el.className=‘qr show ‘+(gr.score>=6?‘cm’:‘wm’);el.textContent=‘Score: ‘+gr.score+’/10 - ‘+gr.feedback;g(‘q’+qi).appendChild(el);});}catch(e){saScore=sa.length*5;}}
+var mp=mcT>0?(mcC/mcT)*100:100, sp2=sa.length>0?(saScore/(sa.length*10))*100:100, tot=Math.round(sa.length>0?(mp+sp2)/2:mp);
+var gr=tot>=90?‘A’:tot>=80?‘B’:tot>=70?‘C’:tot>=60?‘D’:‘F’;
+var msgs={A:‘Outstanding!’,B:‘Great work!’,C:‘Good effort!’,D:‘Keep at it!’,F:“Don’t give up!”};
+g(‘RES’).innerHTML=’<div class="fsc"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888899;margin-bottom:16px">Quiz Complete</div><div class="fgr '+gr+'">’+gr+’</div><div class="fsub">’+tot+’% · ‘+msgs[gr]+’</div><div class="fst"><div><div class="sv" style="color:#c8f060">’+(mcT>0?mcC+’/’+mcT:’—’)+’</div><div class="slb">MC Correct</div></div><div><div class="sv" style="color:#60b8f0">’+fbScore+’</div><div class="slb">Summary Score</div></div><div><div class="sv" style="color:#60f0a8">’+tot+’%</div><div class="slb">Quiz Score</div></div></div><div class="row" style="justify-content:center"><button id="BREV" class="btn bs">Revise</button> <button id="BRST" class="btn bp">New Session ↻</button></div></div>’;
+g(‘BREV’).addEventListener(‘click’,function(){goPanel(2);});
+g(‘BRST’).addEventListener(‘click’,function(){screen(‘H’);loadHistory();});
+g(‘RES’).scrollIntoView({behavior:‘smooth’}); g(‘QZA’).style.display=‘none’;
+if(fbData) await saveSession(fbData,tot);
 }
 
 // Wire up all buttons
-g('T0').addEventListener('click',function(){switchTab(0);});
-g('T1').addEventListener('click',function(){switchTab(1);});
-g('PIN').addEventListener('input',function(){src=this.value;g('CC').textContent=src.length;checkB1();});
-g('B1').addEventListener('click',function(){if(activeTab===0)src=g('PIN').value.trim();g('SPREV').textContent=src.substring(0,600)+(src.length>600?'...':'');g('USUM').value='';g('SC').textContent='0';g('BFB').disabled=true;goPanel(2);});
-g('USUM').addEventListener('input',function(){var v=this.value;g('SC').textContent=v.length;g('BFB').disabled=v.trim().length<80;});
-g('BB2').addEventListener('click',function(){goPanel(1);});
-g('BFB').addEventListener('click',getFeedback);
-g('BB3').addEventListener('click',function(){goPanel(2);});
-g('BQZ').addEventListener('click',startQuiz);
-g('BSUB').addEventListener('click',submitQuiz);
-g('HNEW').addEventListener('click',function(){src='';fbData=null;quizData=[];sessionId=null;activeTab=0;g('PIN').value='';g('USUM').value='';g('CC').textContent='0';g('SC').textContent='0';clearFile();switchTab(0);goPanel(1);screen('M');});
-g('MHIST').addEventListener('click',function(){screen('H');loadHistory();});
-g('DZ').addEventListener('dragover',function(e){e.preventDefault();this.style.borderColor='#c8f060';});
-g('DZ').addEventListener('dragleave',function(){this.style.borderColor='#2a2a35';});
-g('DZ').addEventListener('drop',function(e){e.preventDefault();this.style.borderColor='#2a2a35';if(e.dataTransfer.files[0])readPDF(e.dataTransfer.files[0]);});
-g('FI').addEventListener('change',function(){if(this.files[0])readPDF(this.files[0]);});
+g(‘T0’).addEventListener(‘click’,function(){switchTab(0);});
+g(‘T1’).addEventListener(‘click’,function(){switchTab(1);});
+g(‘PIN’).addEventListener(‘input’,function(){src=this.value;g(‘CC’).textContent=src.length;checkB1();});
+g(‘B1’).addEventListener(‘click’,function(){if(activeTab===0)src=g(‘PIN’).value.trim();g(‘SPREV’).textContent=src.substring(0,600)+(src.length>600?’…’:’’);g(‘USUM’).value=’’;g(‘SC’).textContent=‘0’;g(‘BFB’).disabled=true;goPanel(2);});
+g(‘USUM’).addEventListener(‘input’,function(){var v=this.value;g(‘SC’).textContent=v.length;g(‘BFB’).disabled=v.trim().length<80;});
+g(‘BB2’).addEventListener(‘click’,function(){goPanel(1);});
+g(‘BFB’).addEventListener(‘click’,getFeedback);
+g(‘BB3’).addEventListener(‘click’,function(){goPanel(2);});
+g(‘BQZ’).addEventListener(‘click’,startQuiz);
+g(‘BSUB’).addEventListener(‘click’,submitQuiz);
+g(‘HNEW’).addEventListener(‘click’,function(){src=’’;fbData=null;quizData=[];sessionId=null;activeTab=0;g(‘PIN’).value=’’;g(‘USUM’).value=’’;g(‘CC’).textContent=‘0’;g(‘SC’).textContent=‘0’;clearFile();switchTab(0);goPanel(1);screen(‘M’);});
+g(‘MHIST’).addEventListener(‘click’,function(){screen(‘H’);loadHistory();});
+g(‘DZ’).addEventListener(‘dragover’,function(e){e.preventDefault();this.style.borderColor=’#c8f060’;});
+g(‘DZ’).addEventListener(‘dragleave’,function(){this.style.borderColor=’#2a2a35’;});
+g(‘DZ’).addEventListener(‘drop’,function(e){e.preventDefault();this.style.borderColor=’#2a2a35’;if(e.dataTransfer.files[0])readPDF(e.dataTransfer.files[0]);});
+g(‘FI’).addEventListener(‘change’,function(){if(this.files[0])readPDF(this.files[0]);});
 
 initAuth();
 </script>
