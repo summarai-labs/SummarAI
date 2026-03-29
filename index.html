@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SummarAI</title>
+<title>SummarAI — AI-Powered Study Tool</title>
+<meta name="description" content="SummarAI helps you understand and retain what you read. Paste any text or upload a PDF, write a summary, get AI feedback, and test yourself with a quiz. Free to use.">
+<meta name="keywords" content="AI study tool, summarize text, AI feedback, study app, reading comprehension, quiz generator">
+<meta name="author" content="SummarAI">
+<meta property="og:title" content="SummarAI — AI-Powered Study Tool">
+<meta property="og:description" content="Paste any text, summarize it, get AI feedback and take a quiz. Learn smarter with SummarAI.">
+<meta property="og:url" content="https://summarai-labs.github.io/SummarAI">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SummarAI — AI-Powered Study Tool">
+<meta name="twitter:description" content="Paste any text, summarize it, get AI feedback and take a quiz. Free to use.">
+<link rel="canonical" href="https://summarai-labs.github.io/SummarAI">
+<meta name="google-site-verification" content="google923ffd90c804d8d6">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d0d0f;--sur:#16161a;--s2:#1e1e24;--bor:#2a2a35;--acc:#c8f060;--ac2:#60b8f0;--ac3:#f060b8;--txt:#f0f0f5;--mut:#888899;--dan:#f06060;--ok:#60f0a8}
@@ -99,9 +111,245 @@ textarea:focus{border-color:#c8f060}
 .hdel{background:none;border:none;color:#888899;cursor:pointer;font-size:18px;padding:6px;flex-shrink:0}
 .nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
 .nemail{font-size:12px;color:#888899;margin-right:8px}
+
+/* LANDING PAGE */
+.lscreen{display:none}
+.lscreen.on{display:block}
+lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);background:rgba(13,13,15,.8)}
+.lnav-logo{font-family:"Syne",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;color:#f0f0f5}
+.lnav-logo span{color:#c8f060}
+.lhero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.lhero::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(200,240,96,.07) 0%,transparent 70%);pointer-events:none}
+.ltag{display:inline-block;background:rgba(200,240,96,.1);border:1px solid rgba(200,240,96,.2);color:#c8f060;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:32px}
+.lh1{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(40px,7vw,84px);line-height:1.05;letter-spacing:-2px;margin-bottom:24px}
+.lh1 em{font-style:normal;color:#c8f060}
+.lsub{font-size:clamp(15px,2vw,19px);color:#666677;max-width:560px;margin:0 auto 48px;font-weight:300}
+.lbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.lbtn-p{background:#c8f060;color:#000;border:none;padding:14px 32px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:16px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.lbtn-p:hover{opacity:.85}
+.lbtn-g{background:transparent;color:#f0f0f5;border:1px solid #2a2a35;padding:14px 32px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:16px;font-weight:400;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.lbtn-g:hover{border-color:#c8f060;color:#c8f060}
+.lnote{margin-top:20px;font-size:13px;color:#666677}
+.lstats{padding:50px 40px;border-top:1px solid #2a2a35;border-bottom:1px solid #2a2a35;background:#111114}
+.lstats-i{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.lstat-n{font-family:"Syne",sans-serif;font-weight:800;font-size:42px;color:#c8f060;line-height:1}
+.lstat-l{font-size:14px;color:#666677;margin-top:6px}
+.lsec{padding:90px 40px;max-width:1100px;margin:0 auto}
+.lsec-tag{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#c8f060;margin-bottom:16px}
+.lsec-title{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(30px,4vw,50px);letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.lsec-sub{font-size:16px;color:#666677;max-width:520px;font-weight:300}
+.lprob{padding:90px 40px;background:#111114;border-top:1px solid #2a2a35;border-bottom:1px solid #2a2a35}
+.lprob-i{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.lcmp{display:flex;flex-direction:column;gap:12px}
+.lcmp-row{display:flex;gap:12px}
+.lcmp-card{flex:1;background:#13131a;border:1px solid #2a2a35;border-radius:12px;padding:16px;font-size:13.5px;line-height:1.6}
+.lcmp-card.bad{border-color:rgba(240,96,96,.25);background:rgba(240,96,96,.04)}
+.lcmp-card.good{border-color:rgba(200,240,96,.25);background:rgba(200,240,96,.04)}
+.lcmp-lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.lcmp-card.bad .lcmp-lbl{color:#f06060}
+.lcmp-card.good .lcmp-lbl{color:#c8f060}
+.lsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:50px}
+.lstep{background:#13131a;border:1px solid #2a2a35;border-radius:14px;padding:24px;position:relative;overflow:hidden;transition:border-color .3s}
+.lstep:hover{border-color:#c8f060}
+.lstep-num{font-family:"Syne",sans-serif;font-weight:800;font-size:56px;color:rgba(200,240,96,.07);position:absolute;top:-8px;right:10px;line-height:1}
+.lstep-icon{font-size:24px;margin-bottom:14px}
+.lstep-title{font-family:"Syne",sans-serif;font-weight:700;font-size:15px;margin-bottom:6px}
+.lstep-desc{font-size:13px;color:#666677;line-height:1.6}
+.ldiff{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:50px}
+.ldiff-card{background:#13131a;border:1px solid #2a2a35;border-radius:14px;padding:24px;transition:border-color .3s}
+.ldiff-card:hover{border-color:#60b8f0}
+.ldiff-icon{font-size:26px;margin-bottom:14px}
+.ldiff-title{font-family:"Syne",sans-serif;font-weight:700;font-size:16px;margin-bottom:8px}
+.ldiff-desc{font-size:13.5px;color:#666677;line-height:1.6}
+.ldiff-card.hl{background:rgba(200,240,96,.04);border-color:rgba(200,240,96,.2)}
+.ltesti{padding:90px 40px;background:#111114;border-top:1px solid #2a2a35;border-bottom:1px solid #2a2a35}
+.ltesti-i{max-width:1100px;margin:0 auto}
+.ltesti-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:50px}
+.ltesti-card{background:#13131a;border:1px solid #2a2a35;border-radius:14px;padding:24px}
+.ltesti-stars{color:#c8f060;font-size:13px;margin-bottom:14px;letter-spacing:2px}
+.ltesti-q{font-size:14.5px;line-height:1.7;margin-bottom:18px;font-weight:300}
+.ltesti-auth{display:flex;align-items:center;gap:10px}
+.ltesti-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:700;font-size:13px}
+.ltesti-name{font-size:13.5px;font-weight:500}
+.ltesti-role{font-size:12px;color:#666677}
+.lfaq-list{margin-top:50px;display:flex;flex-direction:column;gap:10px}
+.lfaq-item{background:#13131a;border:1px solid #2a2a35;border-radius:10px;overflow:hidden}
+.lfaq-q{padding:18px 22px;font-weight:500;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;-webkit-user-select:none}
+.lfaq-q:hover{color:#c8f060}
+.lfaq-arr{font-size:18px;color:#666677;transition:transform .3s}
+.lfaq-item.open .lfaq-arr{transform:rotate(45deg);color:#c8f060}
+.lfaq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:14px;color:#666677;line-height:1.7;padding:0 22px}
+.lfaq-item.open .lfaq-a{max-height:200px;padding:0 22px 18px}
+.lcontact{padding:90px 40px;background:#111114;border-top:1px solid #2a2a35}
+.lcontact-i{max-width:660px;margin:0 auto;text-align:center}
+.lfinp{width:100%;background:#1e1e24;border:1px solid #2a2a35;border-radius:10px;color:#f0f0f5;font-family:"DM Sans",sans-serif;font-size:15px;padding:13px 16px;outline:none;transition:border-color .2s;-webkit-appearance:none;margin-bottom:12px}
+.lfinp:focus{border-color:#c8f060}
+.lfinp::placeholder{color:#666677}
+.lform-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lform-submit{width:100%;background:#c8f060;color:#000;border:none;padding:14px;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:4px;transition:opacity .2s}
+.lform-submit:hover{opacity:.85}
+.lform-success{display:none;background:rgba(200,240,96,.1);border:1px solid rgba(200,240,96,.2);border-radius:10px;padding:14px 18px;color:#c8f060;font-size:14px;text-align:center;margin-top:12px}
+.lcta{padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.lcta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50%,rgba(200,240,96,.06),transparent 70%);pointer-events:none}
+.lcta h2{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(34px,5vw,62px);letter-spacing:-1.5px;margin-bottom:18px}
+.lcta p{font-size:17px;color:#666677;margin-bottom:36px;font-weight:300}
+.lfooter{padding:36px 40px;border-top:1px solid #2a2a35;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.lfooter-logo{font-family:"Syne",sans-serif;font-weight:800;font-size:18px}
+.lfooter-logo span{color:#c8f060}
+.lfu{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.lfu.lvis{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  lnav{padding:16px 20px}
+  .lnav{padding:16px 20px}
+  .lhero{padding:90px 20px 60px}
+  .lh1{letter-spacing:-1px}
+  .lstats{padding:36px 20px}
+  .lstats-i{grid-template-columns:1fr;gap:24px}
+  .lsec{padding:60px 20px}
+  .lprob{padding:60px 20px}
+  .lprob-i{grid-template-columns:1fr;gap:32px}
+  .lcmp-row{flex-direction:column}
+  .lsteps{grid-template-columns:1fr 1fr;gap:12px}
+  .ldiff{grid-template-columns:1fr;gap:12px}
+  .ltesti{padding:60px 20px}
+  .ltesti-grid{grid-template-columns:1fr;gap:12px}
+  .lcontact{padding:60px 20px}
+  .lform-row{grid-template-columns:1fr}
+  .lcta{padding:60px 20px}
+  .lfooter{padding:24px 20px;flex-direction:column;text-align:center}
+  .lbtns{flex-direction:column;align-items:center}
+  .lbtn-p,.lbtn-g{width:100%;max-width:300px;text-align:center}
+}
+
 </style>
 </head>
 <body>
+
+<!-- LANDING SCREEN -->
+<div id="SL" class="lscreen">
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);background:rgba(13,13,15,.8)">
+    <div class="lnav-logo">Summar<span>AI</span></div>
+    <button class="lbtn-p" id="LNAV-BTN" style="padding:10px 22px;font-size:14px">Get Started &rarr;</button>
+  </nav>
+  <div class="lhero">
+    <div class="ltag">Now in Beta</div>
+    <h1 class="lh1">Stop skimming.<br><em>Start understanding.</em></h1>
+    <p class="lsub">SummarAI doesn&apos;t summarize for you. It trains your brain to understand and retain what you read &mdash; through active recall, AI feedback, and real comprehension testing.</p>
+    <div class="lbtns">
+      <button class="lbtn-p" id="LHERO-BTN">Try SummarAI Free &rarr;</button>
+      <button class="lbtn-g" onclick="document.getElementById('lhow').scrollIntoView({behavior:'smooth'})">See how it works</button>
+    </div>
+    <p class="lnote">Free to use &middot; No download needed &middot; Works on any device</p>
+  </div>
+  <div class="lstats">
+    <div class="lstats-i">
+      <div><div class="lstat-n">100%</div><div class="lstat-l">Free to use</div></div>
+      <div><div class="lstat-n">4</div><div class="lstat-l">Step learning system</div></div>
+      <div><div class="lstat-n">AI</div><div class="lstat-l">Powered feedback &amp; quizzes</div></div>
+    </div>
+  </div>
+  <div class="lprob">
+    <div class="lprob-i">
+      <div class="lfu">
+        <div class="lsec-tag">The Problem</div>
+        <h2 class="lsec-title">Most AI study tools do the work <span style="color:#f060c8">for</span> you.</h2>
+        <p class="lsec-sub" style="max-width:100%">Paste text, get a summary. Done. But you didn&apos;t learn anything &mdash; the AI did. SummarAI flips that. You do the thinking. The AI tells you how well you&apos;re doing.</p>
+      </div>
+      <div class="lcmp lfu">
+        <div class="lcmp-row">
+          <div class="lcmp-card bad"><div class="lcmp-lbl">&#10060; Other tools</div>&ldquo;Here&apos;s a summary of your text. You&apos;re welcome.&rdquo;</div>
+          <div class="lcmp-card good"><div class="lcmp-lbl">&#10003; SummarAI</div>&ldquo;Write a summary. Here&apos;s what you understood well and what you missed.&rdquo;</div>
+        </div>
+        <div class="lcmp-row" style="margin-top:12px">
+          <div class="lcmp-card bad"><div class="lcmp-lbl">&#10060; Other tools</div>You read it once and forget it in 24 hours.</div>
+          <div class="lcmp-card good"><div class="lcmp-lbl">&#10003; SummarAI</div>Active recall + quiz = retention that actually sticks.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lsec" id="lhow">
+    <div class="lfu">
+      <div class="lsec-tag">How It Works</div>
+      <h2 class="lsec-title">Four steps. Real learning.</h2>
+      <p class="lsec-sub">A process that builds genuine comprehension &mdash; not just surface-level skimming.</p>
+    </div>
+    <div class="lsteps">
+      <div class="lstep lfu"><div class="lstep-num">1</div><div class="lstep-icon">&#128196;</div><div class="lstep-title">Load your text</div><div class="lstep-desc">Paste any article, textbook chapter, or upload a PDF. Any topic, any subject.</div></div>
+      <div class="lstep lfu"><div class="lstep-num">2</div><div class="lstep-icon">&#9999;&#65039;</div><div class="lstep-title">Write a summary</div><div class="lstep-desc">Read the text and write the key ideas in your own words. This is where real learning happens.</div></div>
+      <div class="lstep lfu"><div class="lstep-num">3</div><div class="lstep-icon">&#129302;</div><div class="lstep-title">Get AI feedback</div><div class="lstep-desc">Receive a score out of 100 with specific tips on what you nailed and what you missed.</div></div>
+      <div class="lstep lfu"><div class="lstep-num">4</div><div class="lstep-icon">&#129504;</div><div class="lstep-title">Take the quiz</div><div class="lstep-desc">AI generates custom questions to test your comprehension. Multiple choice and short answer.</div></div>
+    </div>
+  </div>
+  <div class="lsec" style="padding-top:0">
+    <div class="lfu">
+      <div class="lsec-tag">Why SummarAI</div>
+      <h2 class="lsec-title">Built to make you smarter,<br>not lazier.</h2>
+    </div>
+    <div class="ldiff">
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#127919;</div><div class="ldiff-title">Active recall, not passive reading</div><div class="ldiff-desc">Writing a summary forces your brain to process and reconstruct information &mdash; the most effective way to retain it.</div></div>
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#128202;</div><div class="ldiff-title">Personalized feedback</div><div class="ldiff-desc">Not just right or wrong. Detailed AI analysis of exactly what you understood and what you missed.</div></div>
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#128194;</div><div class="ldiff-title">Your history, tracked</div><div class="ldiff-desc">Every session saved. Review past feedback, track your scores, and revisit any material.</div></div>
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#9889;</div><div class="ldiff-title">Works everywhere</div><div class="ldiff-desc">No app to download. Opens instantly in any browser on any device &mdash; phone, tablet, or laptop.</div></div>
+      <div class="ldiff-card hl lfu"><div class="ldiff-icon">&#128;&#30;</div><div class="ldiff-title">Completely free</div><div class="ldiff-desc">No subscriptions. No paywalls. No credit card. Just create an account and start learning.</div></div>
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#128272;</div><div class="ldiff-title">Secure accounts</div><div class="ldiff-desc">Sign in with email or Google. Your data stays private and sessions are saved securely.</div></div>
+    </div>
+  </div>
+  <div class="ltesti">
+    <div class="ltesti-i">
+      <div class="lfu" style="text-align:center">
+        <div class="lsec-tag">What Users Say</div>
+        <h2 class="lsec-title">Real feedback from real people.</h2>
+      </div>
+      <div class="ltesti-grid">
+        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;This app is great and has genuinely developed my summarization skills. Especially helped me at science &mdash; I&apos;m understanding things I used to just memorize.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(200,240,96,.15);color:#c8f060">A</div><div><div class="ltesti-name">Ahmad</div><div class="ltesti-role">High school student</div></div></div></div>
+        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;I used to highlight everything and feel like I was studying. SummarAI made me realize I wasn&apos;t retaining anything. Now I actually test myself and the difference is real.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(96,200,240,.15);color:#60b8f0">S</div><div><div class="ltesti-name">Sara</div><div class="ltesti-role">University student</div></div></div></div>
+        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;The AI feedback is surprisingly specific. It doesn&apos;t just say &lsquo;good job&rsquo; &mdash; it tells you exactly which ideas you missed and why they matter. That&apos;s what makes it useful.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(240,96,200,.15);color:#f060c8">K</div><div><div class="ltesti-name">Karim</div><div class="ltesti-role">Self-learner</div></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lsec">
+    <div class="lfu" style="text-align:center">
+      <div class="lsec-tag">FAQ</div>
+      <h2 class="lsec-title">Common questions.</h2>
+    </div>
+    <div class="lfaq-list">
+      <div class="lfaq-item"><div class="lfaq-q">Does SummarAI summarize my text for me? <span class="lfaq-arr">+</span></div><div class="lfaq-a">No &mdash; and that&apos;s the point. SummarAI is a learning tool, not a shortcut. You write the summary yourself, and the AI gives you feedback on how well you understood the material.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Is SummarAI really free? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Yes, completely free. No credit card, no subscription, no hidden fees. Just create an account and start using it.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">What kind of text can I use? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Anything &mdash; articles, textbook chapters, essays, news stories, lecture notes. You can paste text directly or upload a text-based PDF. Any subject, any topic.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Do I need to download an app? <span class="lfaq-arr">+</span></div><div class="lfaq-a">No. SummarAI runs entirely in your browser. Open the link on your phone, tablet, or computer and it works instantly.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Are my sessions saved? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Yes. Every session &mdash; your text, summary, AI feedback score, and quiz results &mdash; is saved to your account. You can review your history and track your progress over time.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Who is SummarAI for? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Anyone who reads to learn. Students, professionals, self-learners &mdash; if you want to actually understand and remember what you read, SummarAI is for you.</div></div>
+    </div>
+  </div>
+  <div class="lcontact">
+    <div class="lcontact-i">
+      <div class="lfu">
+        <div class="lsec-tag" style="text-align:center">Contact</div>
+        <h2 class="lsec-title" style="text-align:center">Questions? Feedback?<br>We want to hear it.</h2>
+        <p style="color:#666677;font-size:15px;font-weight:300;margin-bottom:36px">Whether it&apos;s a bug, a suggestion, or just a question &mdash; send it our way.</p>
+      </div>
+      <div class="lfu">
+        <div class="lform-row" style="margin-bottom:12px">
+          <input class="lfinp" style="margin-bottom:0" type="text" id="LCF-NAME" placeholder="Your name">
+          <input class="lfinp" style="margin-bottom:0" type="email" id="LCF-EMAIL" placeholder="Email address">
+        </div>
+        <select class="lfinp" id="LCF-TYPE"><option value="" disabled selected>What is this about?</option><option>Bug report</option><option>Feature request</option><option>General feedback</option><option>Question</option><option>Other</option></select>
+        <textarea class="lfinp" id="LCF-MSG" style="min-height:110px;resize:vertical" placeholder="Tell us more..."></textarea>
+        <button class="lform-submit" id="LCF-SUBMIT">Send Message</button>
+        <div class="lform-success" id="LCF-SUCCESS">&#10003; Message sent! We will get back to you soon.</div>
+      </div>
+    </div>
+  </div>
+  <div class="lcta">
+    <h2 class="lfu">Ready to actually<br><em style="color:#c8f060">learn something?</em></h2>
+    <p class="lfu">Join the students and readers who are studying smarter with SummarAI.</p>
+    <button class="lbtn-p lfu" id="LCTA-BTN" style="font-size:17px;padding:15px 38px">Try SummarAI Free &rarr;</button>
+  </div>
+  <div class="lfooter">
+    <div class="lfooter-logo">Summar<span>AI</span></div>
+    <div style="font-size:13px;color:#666677">&copy; 2025 SummarAI &middot; Free to use</div>
+  </div>
+</div>
 
 <div class="ascreen" id="SA">
   <div class="acard">
@@ -275,6 +523,7 @@ var src='', fbScore=0, fbData=null, quizData=[], activeTab=0, uid=null, utoken=n
 function g(id) { return document.getElementById(id); }
 
 function screen(s) {
+  g('SL').style.display = s==='L' ? 'block' : 'none';
   g('SA').style.display = s==='A' ? 'flex' : 'none';
   g('SH').style.display = s==='H' ? 'block' : 'none';
   g('SM').style.display = s==='M' ? 'block' : 'none';
@@ -353,7 +602,7 @@ async function initAuth() {
   }
   try { utoken=localStorage.getItem('sat'); uid=localStorage.getItem('suid'); uemail=localStorage.getItem('sem'); } catch(e){}
   if (utoken && uid) { g('HEM').textContent=uemail||''; screen('H'); loadHistory(); }
-  else screen('A');
+  else screen('L');
 }
 
 function showResetForm(token) {
@@ -553,6 +802,42 @@ g('DZ').addEventListener('dragover',function(e){e.preventDefault();this.style.bo
 g('DZ').addEventListener('dragleave',function(){this.style.borderColor='#2a2a35';});
 g('DZ').addEventListener('drop',function(e){e.preventDefault();this.style.borderColor='#2a2a35';if(e.dataTransfer.files[0])readPDF(e.dataTransfer.files[0]);});
 g('FI').addEventListener('change',function(){if(this.files[0])readPDF(this.files[0]);});
+
+// Landing page buttons
+g('LNAV-BTN').addEventListener('click', function(){ screen('A'); });
+g('LHERO-BTN').addEventListener('click', function(){ screen('A'); });
+g('LCTA-BTN').addEventListener('click', function(){ screen('A'); });
+
+// Landing FAQ
+document.querySelectorAll('.lfaq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = this.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.lfaq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Landing scroll animations
+var lobs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('lvis'); });
+}, {threshold:0.08});
+document.querySelectorAll('.lfu').forEach(function(el){ lobs.observe(el); });
+
+// Landing contact form
+g('LCF-SUBMIT').addEventListener('click', function() {
+  var name = g('LCF-NAME').value.trim();
+  var email = g('LCF-EMAIL').value.trim();
+  var type = g('LCF-TYPE').value;
+  var msg = g('LCF-MSG').value.trim();
+  if (!name || !email || !type || !msg) { alert('Please fill in all fields.'); return; }
+  this.disabled = true; this.textContent = 'Sending...';
+  setTimeout(function(){
+    g('LCF-SUCCESS').style.display = 'block';
+    g('LCF-SUBMIT').style.display = 'none';
+    g('LCF-NAME').value = ''; g('LCF-EMAIL').value = ''; g('LCF-MSG').value = '';
+  }, 1000);
+});
 
 initAuth();
 </script>
