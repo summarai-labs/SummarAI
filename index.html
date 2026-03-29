@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SummarAI — AI-Powered Study Tool</title>
+<title>SummarAI - AI-Powered Study Tool</title>
 <meta name="description" content="SummarAI helps you understand and retain what you read. Paste any text or upload a PDF, write a summary, get AI feedback, and test yourself with a quiz. Free to use.">
 <meta name="keywords" content="AI study tool, summarize text, AI feedback, study app, reading comprehension, quiz generator">
 <meta name="author" content="SummarAI">
-<meta property="og:title" content="SummarAI — AI-Powered Study Tool">
+<meta property="og:title" content="SummarAI - AI-Powered Study Tool">
 <meta property="og:description" content="Paste any text, summarize it, get AI feedback and take a quiz. Learn smarter with SummarAI.">
 <meta property="og:url" content="https://summarai-labs.github.io/SummarAI">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SummarAI — AI-Powered Study Tool">
+<meta name="twitter:title" content="SummarAI - AI-Powered Study Tool">
 <meta name="twitter:description" content="Paste any text, summarize it, get AI feedback and take a quiz. Free to use.">
 <link rel="canonical" href="https://summarai-labs.github.io/SummarAI">
 <meta name="google-site-verification" content="google923ffd90c804d8d6">
@@ -221,6 +221,96 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
   .lbtn-p,.lbtn-g{width:100%;max-width:300px;text-align:center}
 }
 
+
+/* LIGHT MODE */
+body.light{--bg:#f5f5f0;--sur:#ffffff;--s2:#f0f0eb;--bor:#e0e0d8;--txt:#1a1a1f;--mut:#666677;background:#f5f5f0;color:#1a1a1f}
+body.light .card{background:#ffffff;border-color:#e0e0d8}
+body.light textarea{background:#f0f0eb;border-color:#e0e0d8;color:#1a1a1f}
+body.light .ainp{background:#f0f0eb;border-color:#e0e0d8;color:#1a1a1f}
+body.light .acard{background:#ffffff;border-color:#e0e0d8}
+body.light .btn.bs{background:#f0f0eb;color:#1a1a1f;border-color:#e0e0d8}
+body.light .btn.bg{color:#666677;border-color:#e0e0d8}
+body.light .qq{background:#f0f0eb;border-color:#e0e0d8}
+body.light .opt{background:#ffffff;border-color:#e0e0d8;color:#1a1a1f}
+body.light .fbb{background:#f0f0eb}
+body.light .tp{background:#f0f0eb;border-color:#e0e0d8}
+body.light .fsc{background:#ffffff;border-color:#e0e0d8}
+body.light .hitem{background:#f0f0eb;border-color:#e0e0d8}
+body.light .tabs{background:#f0f0eb}
+body.light .tab.on{background:#ffffff}
+body.light .qr{background:#f0f0eb}
+body.light #MODE-PARA,body.light #MODE-BULLET{background:transparent}
+body.light #MODE-PARA.active-mode{background:#ffffff!important;color:#1a1a1f!important}
+body.light .lscreen{background:#f5f5f0}
+body.light .lstats,body.light .lprob,body.light .ltesti,body.light .lcontact{background:#ffffff;border-color:#e0e0d8}
+body.light .lstep,body.light .ldiff-card,body.light .ltesti-card,body.light .lcmp-card{background:#f0f0eb;border-color:#e0e0d8}
+body.light .lcmp-card.bad{background:rgba(240,96,96,.06)}
+body.light .lcmp-card.good{background:rgba(200,240,96,.06)}
+body.light .lfaq-item{background:#f0f0eb;border-color:#e0e0d8}
+body.light .lfinp{background:#f0f0eb;border-color:#e0e0d8;color:#1a1a1f}
+body.light .lfooter{border-color:#e0e0d8}
+body.light nav{background:rgba(245,245,240,.9)}
+body.light .ascreen{background:#f5f5f0}
+body.light .hscreen{background:#f5f5f0}
+
+
+/* IMPROVED MOBILE */
+@media(max-width:600px){
+  .app{padding:20px 16px 60px}
+  .nav{flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .nav .logo{font-size:20px}
+  .steps{overflow-x:auto;padding-bottom:8px;margin-bottom:24px;-webkit-overflow-scrolling:touch}
+  .step span{display:none}
+  .scon{min-width:20px}
+  .card{padding:20px 16px;border-radius:12px}
+  .ct{font-size:16px}
+  .cs{font-size:13px}
+  textarea{font-size:16px!important}
+  .btn{padding:12px 18px;font-size:14px}
+  .bp{width:100%;justify-content:center}
+  .row{flex-direction:column}
+  .row .btn{width:100%;justify-content:center}
+  .fst{gap:16px}
+  .sv{font-size:20px}
+  .fgr{font-size:56px}
+  .fsc{padding:28px 16px}
+  .opts{gap:6px}
+  .opt{font-size:13px;padding:10px 12px}
+  .qq{padding:16px}
+  .acard{padding:28px 20px}
+  .alogo{font-size:22px}
+  .ainp{font-size:16px!important}
+  .achk{font-size:13px}
+  .hitem{padding:12px 14px}
+  .hscore{width:38px;height:38px;font-size:13px}
+  .htitle{font-size:13px}
+  .hmeta{font-size:11px}
+  /* Landing mobile */
+  .lhero{padding:80px 16px 50px}
+  .lh1{font-size:36px!important;letter-spacing:-1px}
+  .lsub{font-size:15px}
+  .lbtns{flex-direction:column;align-items:stretch}
+  .lbtn-p,.lbtn-g{text-align:center;width:100%}
+  .lstats-i{grid-template-columns:repeat(3,1fr);gap:16px}
+  .lstat-n{font-size:28px}
+  .lprob-i{grid-template-columns:1fr;gap:24px}
+  .lcmp-row{flex-direction:column}
+  .lsteps{grid-template-columns:1fr 1fr;gap:10px}
+  .lstep{padding:16px}
+  .ldiff{grid-template-columns:1fr 1fr;gap:10px}
+  .ldiff-card{padding:16px}
+  .ltesti-grid{grid-template-columns:1fr;gap:10px}
+  .lform-row{grid-template-columns:1fr}
+  .lsec{padding:50px 16px}
+  .lprob{padding:50px 16px}
+  .ltesti{padding:50px 16px}
+  .lcontact{padding:50px 16px}
+  .lcta{padding:50px 16px}
+  .lfooter{padding:20px 16px}
+  nav{padding:14px 16px}
+  lnav{padding:14px 16px}
+}
+
 </style>
 </head>
 <body>
@@ -229,12 +319,15 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
 <div id="SL" class="lscreen">
   <nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);background:rgba(13,13,15,.8)">
     <div class="lnav-logo">Summar<span>AI</span></div>
-    <button class="lbtn-p" id="LNAV-BTN" style="padding:10px 22px;font-size:14px">Continue to SummarAI &rarr;</button>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button id="THEME-BTN0" style="background:none;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#888899;cursor:pointer;padding:8px 10px;font-size:16px">&#9728;</button>
+      <button class="lbtn-p" id="LNAV-BTN" style="padding:10px 22px;font-size:14px">Get Started &rarr;</button>
+    </div>
   </nav>
   <div class="lhero">
     <div class="ltag">Now in Beta</div>
     <h1 class="lh1">Stop skimming.<br><em>Start understanding.</em></h1>
-    <p class="lsub">SummarAI doesn&apos;t summarize for you. It trains your brain to understand and retain what you read &mdash; through active recall, AI feedback, and real comprehension testing.</p>
+    <p class="lsub">SummarAI doesn&apos;t summarize for you. It trains your brain to understand and retain what you read - through active recall, AI feedback, and real comprehension testing.</p>
     <div class="lbtns">
       <button class="lbtn-p" id="LHERO-BTN">Try SummarAI Free &rarr;</button>
       <button class="lbtn-g" onclick="document.getElementById('lhow').scrollIntoView({behavior:'smooth'})">See how it works</button>
@@ -253,7 +346,7 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
       <div class="lfu">
         <div class="lsec-tag">The Problem</div>
         <h2 class="lsec-title">Most AI study tools do the work <span style="color:#f060c8">for</span> you.</h2>
-        <p class="lsec-sub" style="max-width:100%">Paste text, get a summary. Done. But you didn&apos;t learn anything &mdash; the AI did. SummarAI flips that. You do the thinking. The AI tells you how well you&apos;re doing.</p>
+        <p class="lsec-sub" style="max-width:100%">Paste text, get a summary. Done. But you didn&apos;t learn anything - the AI did. SummarAI flips that. You do the thinking. The AI tells you how well you&apos;re doing.</p>
       </div>
       <div class="lcmp lfu">
         <div class="lcmp-row">
@@ -271,7 +364,7 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
     <div class="lfu">
       <div class="lsec-tag">How It Works</div>
       <h2 class="lsec-title">Four steps. Real learning.</h2>
-      <p class="lsec-sub">A process that builds genuine comprehension &mdash; not just surface-level skimming.</p>
+      <p class="lsec-sub">A process that builds genuine comprehension - not just surface-level skimming.</p>
     </div>
     <div class="lsteps">
       <div class="lstep lfu"><div class="lstep-num">1</div><div class="lstep-icon">&#128196;</div><div class="lstep-title">Load your text</div><div class="lstep-desc">Paste any article, textbook chapter, or upload a PDF. Any topic, any subject.</div></div>
@@ -286,10 +379,10 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
       <h2 class="lsec-title">Built to make you smarter,<br>not lazier.</h2>
     </div>
     <div class="ldiff">
-      <div class="ldiff-card lfu"><div class="ldiff-icon">&#127919;</div><div class="ldiff-title">Active recall, not passive reading</div><div class="ldiff-desc">Writing a summary forces your brain to process and reconstruct information &mdash; the most effective way to retain it.</div></div>
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#127919;</div><div class="ldiff-title">Active recall, not passive reading</div><div class="ldiff-desc">Writing a summary forces your brain to process and reconstruct information - the most effective way to retain it.</div></div>
       <div class="ldiff-card lfu"><div class="ldiff-icon">&#128202;</div><div class="ldiff-title">Personalized feedback</div><div class="ldiff-desc">Not just right or wrong. Detailed AI analysis of exactly what you understood and what you missed.</div></div>
       <div class="ldiff-card lfu"><div class="ldiff-icon">&#128194;</div><div class="ldiff-title">Your history, tracked</div><div class="ldiff-desc">Every session saved. Review past feedback, track your scores, and revisit any material.</div></div>
-      <div class="ldiff-card lfu"><div class="ldiff-icon">&#9889;</div><div class="ldiff-title">Works everywhere</div><div class="ldiff-desc">No app to download. Opens instantly in any browser on any device &mdash; phone, tablet, or laptop.</div></div>
+      <div class="ldiff-card lfu"><div class="ldiff-icon">&#9889;</div><div class="ldiff-title">Works everywhere</div><div class="ldiff-desc">No app to download. Opens instantly in any browser on any device - phone, tablet, or laptop.</div></div>
       <div class="ldiff-card hl lfu"><div class="ldiff-icon">&#128;&#30;</div><div class="ldiff-title">Completely free</div><div class="ldiff-desc">No subscriptions. No paywalls. No credit card. Just create an account and start learning.</div></div>
       <div class="ldiff-card lfu"><div class="ldiff-icon">&#128272;</div><div class="ldiff-title">Secure accounts</div><div class="ldiff-desc">Sign in with email or Google. Your data stays private and sessions are saved securely.</div></div>
     </div>
@@ -301,9 +394,9 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
         <h2 class="lsec-title">Real feedback from real people.</h2>
       </div>
       <div class="ltesti-grid">
-        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;This app is great and has genuinely developed my summarization skills. Especially helped me at science &mdash; I&apos;m understanding things I used to just memorize.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(200,240,96,.15);color:#c8f060">A</div><div><div class="ltesti-name">Ahmad</div><div class="ltesti-role">High school student</div></div></div></div>
-        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;I used to highlight everything and feel like I was studying. SummarAI made me realize I wasn&apos;t retaining anything. Now I actually test myself and the difference is real.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(96,200,240,.15);color:#60b8f0">S</div><div><div class="ltesti-name">Zaid</div><div class="ltesti-role">University student</div></div></div></div>
-        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;The AI feedback is surprisingly specific. It doesn&apos;t just say &lsquo;good job&rsquo; &mdash; it tells you exactly which ideas you missed and why they matter. That&apos;s what makes it useful.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(240,96,200,.15);color:#f060c8">K</div><div><div class="ltesti-name">Karim</div><div class="ltesti-role">Self-learner</div></div></div></div>
+        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;This app is great and has genuinely developed my summarization skills. Especially helped me at science - I&apos;m understanding things I used to just memorize.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(200,240,96,.15);color:#c8f060">A</div><div><div class="ltesti-name">Ahmad</div><div class="ltesti-role">High school student</div></div></div></div>
+        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;I used to highlight everything and feel like I was studying. SummarAI made me realize I wasn&apos;t retaining anything. Now I actually test myself and the difference is real.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(96,200,240,.15);color:#60b8f0">S</div><div><div class="ltesti-name">Sara</div><div class="ltesti-role">University student</div></div></div></div>
+        <div class="ltesti-card lfu"><div class="ltesti-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="ltesti-q">&ldquo;The AI feedback is surprisingly specific. It doesn&apos;t just say &lsquo;good job&rsquo; - it tells you exactly which ideas you missed and why they matter. That&apos;s what makes it useful.&rdquo;</p><div class="ltesti-auth"><div class="ltesti-av" style="background:rgba(240,96,200,.15);color:#f060c8">K</div><div><div class="ltesti-name">Karim</div><div class="ltesti-role">Self-learner</div></div></div></div>
       </div>
     </div>
   </div>
@@ -313,12 +406,12 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
       <h2 class="lsec-title">Common questions.</h2>
     </div>
     <div class="lfaq-list">
-      <div class="lfaq-item"><div class="lfaq-q">Does SummarAI summarize my text for me? <span class="lfaq-arr">+</span></div><div class="lfaq-a">No &mdash; and that&apos;s the point. SummarAI is a learning tool, not a shortcut. You write the summary yourself, and the AI gives you feedback on how well you understood the material.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Does SummarAI summarize my text for me? <span class="lfaq-arr">+</span></div><div class="lfaq-a">No - and that&apos;s the point. SummarAI is a learning tool, not a shortcut. You write the summary yourself, and the AI gives you feedback on how well you understood the material.</div></div>
       <div class="lfaq-item"><div class="lfaq-q">Is SummarAI really free? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Yes, completely free. No credit card, no subscription, no hidden fees. Just create an account and start using it.</div></div>
-      <div class="lfaq-item"><div class="lfaq-q">What kind of text can I use? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Anything &mdash; articles, textbook chapters, essays, news stories, lecture notes. You can paste text directly or upload a text-based PDF. Any subject, any topic.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">What kind of text can I use? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Anything - articles, textbook chapters, essays, news stories, lecture notes. You can paste text directly or upload a text-based PDF. Any subject, any topic.</div></div>
       <div class="lfaq-item"><div class="lfaq-q">Do I need to download an app? <span class="lfaq-arr">+</span></div><div class="lfaq-a">No. SummarAI runs entirely in your browser. Open the link on your phone, tablet, or computer and it works instantly.</div></div>
-      <div class="lfaq-item"><div class="lfaq-q">Are my sessions saved? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Yes. Every session &mdash; your text, summary, AI feedback score, and quiz results &mdash; is saved to your account. You can review your history and track your progress over time.</div></div>
-      <div class="lfaq-item"><div class="lfaq-q">Who is SummarAI for? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Anyone who reads to learn. Students, professionals, self-learners &mdash; if you want to actually understand and remember what you read, SummarAI is for you.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Are my sessions saved? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Yes. Every session - your text, summary, AI feedback score, and quiz results - is saved to your account. You can review your history and track your progress over time.</div></div>
+      <div class="lfaq-item"><div class="lfaq-q">Who is SummarAI for? <span class="lfaq-arr">+</span></div><div class="lfaq-a">Anyone who reads to learn. Students, professionals, self-learners - if you want to actually understand and remember what you read, SummarAI is for you.</div></div>
     </div>
   </div>
   <div class="lcontact">
@@ -326,7 +419,7 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
       <div class="lfu">
         <div class="lsec-tag" style="text-align:center">Contact</div>
         <h2 class="lsec-title" style="text-align:center">Questions? Feedback?<br>We want to hear it.</h2>
-        <p style="color:#666677;font-size:15px;font-weight:300;margin-bottom:36px">Whether it&apos;s a bug, a suggestion, or just a question &mdash; send it our way.</p>
+        <p style="color:#666677;font-size:15px;font-weight:300;margin-bottom:36px">Whether it&apos;s a bug, a suggestion, or just a question - send it our way.</p>
       </div>
       <div class="lfu">
         <div class="lform-row" style="margin-bottom:12px">
@@ -383,9 +476,10 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
   <div class="app">
     <div class="nav">
       <div class="logo">Summar<span>AI</span></div>
-      <div style="display:flex;align-items:center">
+      <div style="display:flex;align-items:center;gap:8px">
         <span class="nemail" id="HEM"></span>
-        <button class="btn bs" id="HNEW" style="padding:7px 14px;font-size:13px;margin-right:8px">+ New</button>
+        <button id="THEME-BTN1" style="background:none;border:1px solid #2a2a35;border-radius:8px;color:#888899;cursor:pointer;padding:7px 10px;font-size:16px">&#9728;</button>
+        <button class="btn bs" id="HNEW" style="padding:7px 14px;font-size:13px">+ New</button>
         <button class="btn bg" id="HOUT" style="padding:7px 14px;font-size:13px">Sign Out</button>
       </div>
     </div>
@@ -394,7 +488,7 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
 
     <div style="background:#16161a;border:1px solid #2a2a35;border-radius:16px;padding:24px;margin:20px 0">
       <div style="font-size:18px;font-weight:700;font-family:Syne,sans-serif;color:#f0f0f5;margin-bottom:6px">Learn smarter, not harder.</div>
-      <div style="font-size:14px;color:#888899;margin-bottom:20px">Paste any text, summarize it in your own words, get AI feedback, and test yourself — all in one place.</div>
+      <div style="font-size:14px;color:#888899;margin-bottom:20px">Paste any text, summarize it in your own words, get AI feedback, and test yourself - all in one place.</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
           <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 1</div>
@@ -427,8 +521,9 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
   <div class="app">
     <div class="nav">
       <div class="logo">Summar<span>AI</span></div>
-      <div>
-        <button class="btn bs" id="MHIST" style="padding:7px 14px;font-size:13px;margin-right:8px">&#8592; History</button>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button id="THEME-BTN2" style="background:none;border:1px solid #2a2a35;border-radius:8px;color:#888899;cursor:pointer;padding:7px 10px;font-size:16px">&#9728;</button>
+        <button class="btn bs" id="MHIST" style="padding:7px 14px;font-size:13px">&#8592; History</button>
         <button class="btn bg" id="MOUT" style="padding:7px 14px;font-size:13px">Sign Out</button>
       </div>
     </div>
@@ -471,7 +566,13 @@ lnav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:f
         <div class="ct">Read &amp; Summarize</div>
         <div class="cs">Read the passage, then write your summary below.</div>
         <div class="tp"><strong>Source Text</strong><span id="SPREV"></span></div>
-        <label style="font-size:13px;color:#888899;font-weight:500;display:block;margin-bottom:8px">Your Summary</label>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <label style="font-size:13px;color:#888899;font-weight:500">Your Summary</label>
+          <div style="display:flex;gap:4px;background:#1e1e24;border-radius:8px;padding:3px">
+            <button id="MODE-PARA" style="padding:5px 12px;border-radius:6px;border:none;background:#16161a;color:#f0f0f5;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer">Paragraph</button>
+            <button id="MODE-BULLET" style="padding:5px 12px;border-radius:6px;border:none;background:transparent;color:#888899;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer">Bullet Points</button>
+          </div>
+        </div>
         <textarea id="USUM" placeholder="Write the main ideas and key points..." style="min-height:200px"></textarea>
         <div class="cc"><span id="SC">0</span> / min 150 characters</div>
         <div id="SUME" class="err" style="display:none">Please write at least 80 characters.</div>
@@ -728,7 +829,7 @@ async function getFeedback() {
   g('SUME').style.display='none'; goPanel(3);
   g('FBL').style.display='flex'; g('FBC').style.display='none'; g('FBA').style.display='none';
   try {
-    var raw=await callAI('You are an expert writing tutor. Analyze this student summary and respond ONLY with a JSON object, no markdown. Original text: '+src.substring(0,3000)+' Student summary: '+sum+' JSON: {"score":75,"scoreLabel":"Good","positive":"...","improve":"...","missing":"...","tip":"..."}',1000);
+    var raw=await callAI('You are a strict and CONSISTENT writing tutor. Score this summary the SAME way every time for the same content. Use this exact rubric - count how many key ideas from the original text the summary covers, then score: 0-30% of key ideas covered = score 15-30. 31-50% covered = score 31-50. 51-70% covered = score 51-65. 71-85% covered = score 66-78. 86-99% covered = score 79-90. 100% covered perfectly = 91-100. Be strict. Deduct heavily for missing important points, vague statements, or incorrect information. Respond ONLY with a raw JSON object, no markdown. Original text: '+src.substring(0,3000)+' Student summary: '+sum+' Respond with exactly: {"score":NUMBER,"scoreLabel":"Poor/Fair/Good/Excellent/Outstanding","positive":"specific praise","improve":"specific criticism","missing":"key ideas not covered","tip":"one actionable tip"}',1000);
     fbData=JSON.parse(raw); fbScore=fbData.score;
     renderFB(fbData); await saveSession(fbData,null);
   } catch(e) { g('FBC').innerHTML='<div class="err">Error: '+e.message+'</div>'; g('FBC').style.display='block'; }
@@ -778,12 +879,27 @@ async function submitQuiz(){
   var mp=mcT>0?(mcC/mcT)*100:100, sp2=sa.length>0?(saScore/(sa.length*10))*100:100, tot=Math.round(sa.length>0?(mp+sp2)/2:mp);
   var gr=tot>=90?'A':tot>=80?'B':tot>=70?'C':tot>=60?'D':'F';
   var msgs={A:'Outstanding!',B:'Great work!',C:'Good effort!',D:'Keep at it!',F:"Don't give up!"};
-  g('RES').innerHTML='<div class="fsc"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888899;margin-bottom:16px">Quiz Complete</div><div class="fgr '+gr+'">'+gr+'</div><div class="fsub">'+tot+'% &middot; '+msgs[gr]+'</div><div class="fst"><div><div class="sv" style="color:#c8f060">'+(mcT>0?mcC+'/'+mcT:'&mdash;')+'</div><div class="slb">MC Correct</div></div><div><div class="sv" style="color:#60b8f0">'+fbScore+'</div><div class="slb">Summary Score</div></div><div><div class="sv" style="color:#60f0a8">'+tot+'%</div><div class="slb">Quiz Score</div></div></div><div class="row" style="justify-content:center"><button id="BREV" class="btn bs">Revise</button>&nbsp;<button id="BRST" class="btn bp">New Session &#8635;</button></div></div>';
+  g('RES').innerHTML='<div class="fsc"><div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888899;margin-bottom:16px">Quiz Complete</div><div class="fgr '+gr+'">'+gr+'</div><div class="fsub">'+tot+'% &middot; '+msgs[gr]+'</div><div class="fst"><div><div class="sv" style="color:#c8f060">'+(mcT>0?mcC+'/'+mcT:'-')+'</div><div class="slb">MC Correct</div></div><div><div class="sv" style="color:#60b8f0">'+fbScore+'</div><div class="slb">Summary Score</div></div><div><div class="sv" style="color:#60f0a8">'+tot+'%</div><div class="slb">Quiz Score</div></div></div><div class="row" style="justify-content:center"><button id="BREV" class="btn bs">Revise</button>&nbsp;<button id="BRST" class="btn bp">New Session &#8635;</button></div></div>';
   g('BREV').addEventListener('click',function(){goPanel(2);});
   g('BRST').addEventListener('click',function(){screen('H');loadHistory();});
   g('RES').scrollIntoView({behavior:'smooth'}); g('QZA').style.display='none';
   if(fbData) await saveSession(fbData,tot);
 }
+
+// Summary mode switcher
+var summaryMode = 'paragraph';
+g('MODE-PARA').addEventListener('click', function() {
+  summaryMode = 'paragraph';
+  this.style.background = '#16161a'; this.style.color = '#f0f0f5';
+  g('MODE-BULLET').style.background = 'transparent'; g('MODE-BULLET').style.color = '#888899';
+  g('USUM').placeholder = 'Write the main ideas and key points...';
+});
+g('MODE-BULLET').addEventListener('click', function() {
+  summaryMode = 'bullet';
+  this.style.background = '#16161a'; this.style.color = '#f0f0f5';
+  g('MODE-PARA').style.background = 'transparent'; g('MODE-PARA').style.color = '#888899';
+  g('USUM').placeholder = '- Write each key point on a new line starting with -\n- Include the most important ideas\n- Keep each point concise';
+});
 
 // Wire up all buttons
 g('T0').addEventListener('click',function(){switchTab(0);});
@@ -837,6 +953,27 @@ g('LCF-SUBMIT').addEventListener('click', function() {
     g('LCF-SUBMIT').style.display = 'none';
     g('LCF-NAME').value = ''; g('LCF-EMAIL').value = ''; g('LCF-MSG').value = '';
   }, 1000);
+});
+
+// Theme toggle
+var isLight = false;
+try { isLight = localStorage.getItem('theme') === 'light'; } catch(e){}
+if (isLight) document.body.classList.add('light');
+function toggleTheme() {
+  isLight = !isLight;
+  document.body.classList.toggle('light', isLight);
+  try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch(e){}
+  var icon = isLight ? '&#9790;' : '&#9728;';
+  ['THEME-BTN0','THEME-BTN1','THEME-BTN2'].forEach(function(id) {
+    var el = g(id); if(el) el.innerHTML = icon;
+  });
+}
+['THEME-BTN0','THEME-BTN1','THEME-BTN2'].forEach(function(id) {
+  var el = g(id);
+  if (el) {
+    el.addEventListener('click', toggleTheme);
+    if (isLight) el.innerHTML = '&#9790;';
+  }
 });
 
 initAuth();
