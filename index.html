@@ -418,6 +418,22 @@ body.light .lnav-logo span{color:#5a7a10}
   lnav{padding:14px 16px}
 }
 
+
+.onboard-card{background:#16161a;border:1px solid #2a2a35;border-radius:16px;padding:24px;margin:20px 0}
+.onboard-title{font-size:18px;font-weight:700;font-family:"Syne",sans-serif;color:#f0f0f5;margin-bottom:6px}
+.onboard-sub{font-size:14px;color:#888899;margin-bottom:20px}
+.onboard-step{background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px}
+.onboard-num{font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px}
+.onboard-stitle{font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px}
+.onboard-sdesc{font-size:12px;color:#888899}
+body.light .onboard-card{background:#ffffff;border-color:#ddddd5}
+body.light .onboard-title{color:#1a1a1f}
+body.light .onboard-sub{color:#555566}
+body.light .onboard-step{background:#f0f0eb;border-color:#ddddd5}
+body.light .onboard-num{color:#5a7a10}
+body.light .onboard-stitle{color:#1a1a1f}
+body.light .onboard-sdesc{color:#555566}
+
 </style>
 </head>
 <body>
@@ -593,30 +609,14 @@ body.light .lnav-logo span{color:#5a7a10}
     <div class="ct" style="margin-bottom:4px">Your Sessions</div>
     <div class="cs">Tap a session to review, or start a new one.</div>
 
-    <div style="background:#16161a;border:1px solid #2a2a35;border-radius:16px;padding:24px;margin:20px 0">
-      <div style="font-size:18px;font-weight:700;font-family:Syne,sans-serif;color:#f0f0f5;margin-bottom:6px">Learn smarter, not harder.</div>
-      <div style="font-size:14px;color:#888899;margin-bottom:20px">Paste any text, summarize it in your own words, get AI feedback, and test yourself - all in one place.</div>
+    <div class="onboard-card">
+      <div class="onboard-title">Learn smarter, not harder.</div>
+      <div class="onboard-sub">Paste any text, summarize it in your own words, get AI feedback, and test yourself - all in one place.</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 1</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Load text</div>
-          <div style="font-size:12px;color:#888899">Paste or upload a PDF</div>
-        </div>
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 2</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Summarize</div>
-          <div style="font-size:12px;color:#888899">Write it in your own words</div>
-        </div>
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 3</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Get feedback</div>
-          <div style="font-size:12px;color:#888899">AI scores your summary</div>
-        </div>
-        <div style="background:#1e1e24;border:1px solid #2a2a35;border-radius:12px;padding:14px 16px;flex:1;min-width:120px">
-          <div style="font-size:12px;font-weight:600;color:#c8f060;margin-bottom:4px">Step 4</div>
-          <div style="font-size:14px;font-weight:500;color:#f0f0f5;margin-bottom:2px">Quiz yourself</div>
-          <div style="font-size:12px;color:#888899">Test your understanding</div>
-        </div>
+        <div class="onboard-step"><div class="onboard-num">Step 1</div><div class="onboard-stitle">Load text</div><div class="onboard-sdesc">Paste or upload a PDF</div></div>
+        <div class="onboard-step"><div class="onboard-num">Step 2</div><div class="onboard-stitle">Summarize</div><div class="onboard-sdesc">Write it in your own words</div></div>
+        <div class="onboard-step"><div class="onboard-num">Step 3</div><div class="onboard-stitle">Get feedback</div><div class="onboard-sdesc">AI scores your summary</div></div>
+        <div class="onboard-step"><div class="onboard-num">Step 4</div><div class="onboard-stitle">Quiz yourself</div><div class="onboard-sdesc">Test your understanding</div></div>
       </div>
     </div>
 
