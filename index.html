@@ -457,6 +457,68 @@ body.light .graph-wrap{background:#ffffff;border-color:#ddddd5}
 body.light .graph-bar:hover::after{background:#5a7a10;color:#fff}
 
 body.light #LSAMPLE-BTN{border-color:rgba(90,122,16,.3);color:#5a7a10}
+
+/* TEACHER MODE */
+.tmode-screen{display:none}
+.tmode-screen.on{display:block}
+.tmain{max-width:1000px;margin:0 auto;padding:80px 24px 60px}
+.tcard{background:var(--sur);border:1px solid var(--bor);border-radius:16px;padding:28px;margin-bottom:20px}
+.tcard-title{font-family:"Syne",sans-serif;font-weight:700;font-size:18px;margin-bottom:6px}
+.tcard-sub{font-size:13.5px;color:var(--mut);margin-bottom:20px}
+.class-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:16px}
+.class-card{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:20px;cursor:pointer;transition:border-color .2s}
+.class-card:hover{border-color:var(--acc)}
+.class-code{font-family:"Syne",sans-serif;font-weight:800;font-size:22px;color:var(--acc);letter-spacing:2px;margin-bottom:4px}
+.class-name{font-size:15px;font-weight:500;margin-bottom:4px}
+.class-meta{font-size:12px;color:var(--mut)}
+.class-detail{display:none}
+.class-detail.on{display:block}
+.student-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--bor)}
+.student-row:last-child{border-bottom:none}
+.student-av{width:36px;height:36px;border-radius:50%;background:var(--s2);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:700;font-size:13px;flex-shrink:0}
+.student-info{flex:1}
+.student-name{font-size:14px;font-weight:500}
+.student-meta{font-size:12px;color:var(--mut)}
+.student-score{font-family:"Syne",sans-serif;font-weight:700;font-size:18px}
+.assign-row{background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.assign-hw{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.assign-hw.hw{background:rgba(200,240,96,.15);color:var(--acc)}
+.assign-hw.opt{background:rgba(136,136,153,.15);color:var(--mut)}
+.assign-title{font-size:14px;font-weight:500;flex:1}
+.assign-meta{font-size:12px;color:var(--mut)}
+.tinp{width:100%;background:var(--s2);border:1px solid var(--bor);border-radius:10px;color:var(--txt);font-family:"DM Sans",sans-serif;font-size:15px;padding:12px 16px;outline:none;transition:border-color .2s;margin-bottom:12px}
+.tinp:focus{border-color:var(--acc)}
+.tinp::placeholder{color:var(--mut)}
+textarea.tinp{resize:vertical;min-height:100px}
+.trow{display:flex;gap:10px;flex-wrap:wrap}
+.tchk{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--mut);margin-bottom:12px;cursor:pointer}
+.tchk input{width:18px;height:18px;accent-color:var(--acc)}
+.back-btn{background:none;border:none;color:var(--mut);font-family:"DM Sans",sans-serif;font-size:14px;cursor:pointer;padding:0;margin-bottom:20px;display:flex;align-items:center;gap:6px}
+.back-btn:hover{color:var(--txt)}
+.stat-chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.stat-chip{background:var(--s2);border:1px solid var(--bor);border-radius:8px;padding:10px 16px;text-align:center}
+.stat-chip-n{font-family:"Syne",sans-serif;font-weight:700;font-size:20px;color:var(--acc)}
+.stat-chip-l{font-size:12px;color:var(--mut);margin-top:2px}
+/* Student assignments tab */
+.assign-tab{display:none}
+.assign-tab.on{display:block}
+.assign-item{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:16px 18px;margin-bottom:10px;cursor:pointer;transition:border-color .2s}
+.assign-item:hover{border-color:var(--acc)}
+.assign-item-title{font-size:15px;font-weight:500;margin-bottom:4px}
+.assign-item-meta{font-size:12px;color:var(--mut)}
+.assign-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-right:6px;text-transform:uppercase;letter-spacing:.05em}
+.assign-badge.hw{background:rgba(200,240,96,.15);color:var(--acc)}
+.assign-badge.done{background:rgba(96,240,168,.15);color:var(--ok)}
+.assign-badge.opt{background:rgba(136,136,153,.12);color:var(--mut)}
+/* Light mode */
+body.light .tcard{background:#ffffff;border-color:#ddddd5}
+body.light .class-card{background:#f0f0eb;border-color:#ddddd5}
+body.light .assign-row{background:#f0f0eb;border-color:#ddddd5}
+body.light .tinp{background:#f0f0eb;border-color:#ddddd5;color:#1a1a1f}
+body.light .stat-chip{background:#f0f0eb;border-color:#ddddd5}
+body.light .assign-item{background:#f0f0eb;border-color:#ddddd5}
+body.light .student-row{border-color:#ddddd5}
+
 </style>
 </head>
 <body>
@@ -594,6 +656,96 @@ body.light #LSAMPLE-BTN{border-color:rgba(90,122,16,.3);color:#5a7a10}
   </div>
 </div>
 
+
+<!-- TEACHER DASHBOARD -->
+<div id="ST" class="tmode-screen">
+  <div class="tmain">
+    <div class="nav">
+      <div class="logo">Summar<span>AI</span> <span style="font-size:12px;background:rgba(200,240,96,.15);color:var(--acc);padding:3px 8px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:500">Teacher</span></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button id="THEME-BTN3" style="background:none;border:1px solid var(--bor);border-radius:8px;color:var(--mut);cursor:pointer;padding:7px 10px;font-size:16px">&#9728;</button>
+        <span class="nemail" id="TEM"></span>
+        <button class="btn bg" id="TOUT" style="padding:7px 14px;font-size:13px">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- Teacher overview -->
+    <div id="T-OVERVIEW">
+      <div class="tcard">
+        <div class="tcard-title">Your Classrooms</div>
+        <div class="tcard-sub">Manage your classes and view student progress.</div>
+        <div class="class-grid" id="T-CLASS-LIST">
+          <div class="ld"><div class="sp"></div>&nbsp;Loading...</div>
+        </div>
+        <div style="margin-top:16px">
+          <button class="btn bp" id="T-NEW-CLASS-BTN" style="font-size:14px;padding:10px 20px">+ Create Classroom</button>
+        </div>
+      </div>
+
+      <!-- Create classroom form -->
+      <div class="tcard" id="T-CREATE-FORM" style="display:none">
+        <div class="tcard-title">Create a Classroom</div>
+        <div class="tcard-sub">Students will join using the code you share with them.</div>
+        <input class="tinp" type="text" id="T-CLASS-NAME" placeholder="Class name (e.g. Grade 10 Biology)">
+        <div class="trow">
+          <button class="btn bp" id="T-CREATE-SUBMIT">Create Classroom</button>
+          <button class="btn bg" id="T-CREATE-CANCEL">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classroom detail view -->
+    <div id="T-CLASS-DETAIL" style="display:none">
+      <button class="back-btn" id="T-BACK-BTN">&#8592; Back to classrooms</button>
+      <div class="tcard">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+          <div>
+            <div class="tcard-title" id="T-CLASS-TITLE">Class Name</div>
+            <div style="font-size:13px;color:var(--mut)">Share this code with students: <span id="T-CLASS-CODE" style="font-family:'Syne',sans-serif;font-weight:800;color:var(--acc);letter-spacing:2px;font-size:16px"></span></div>
+          </div>
+          <button class="btn bp" id="T-NEW-ASSIGN-BTN" style="font-size:13px;padding:9px 18px">+ New Assignment</button>
+        </div>
+        <div class="stat-chips" id="T-STAT-CHIPS">
+          <div class="stat-chip"><div class="stat-chip-n" id="T-STAT-STUDENTS">0</div><div class="stat-chip-l">Students</div></div>
+          <div class="stat-chip"><div class="stat-chip-n" id="T-STAT-ASSIGNS">0</div><div class="stat-chip-l">Assignments</div></div>
+          <div class="stat-chip"><div class="stat-chip-n" id="T-STAT-AVG">-</div><div class="stat-chip-l">Avg Score</div></div>
+          <div class="stat-chip"><div class="stat-chip-n" id="T-STAT-TIME">-</div><div class="stat-chip-l">Avg Time</div></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs" style="margin-bottom:20px">
+          <button class="tab on" id="T-TAB-STUDENTS">Students</button>
+          <button class="tab" id="T-TAB-ASSIGNS">Assignments</button>
+        </div>
+
+        <!-- Students tab -->
+        <div id="T-STUDENTS-PANEL">
+          <div id="T-STUDENT-LIST"><div class="ld"><div class="sp"></div>&nbsp;Loading students...</div></div>
+        </div>
+
+        <!-- Assignments tab -->
+        <div id="T-ASSIGNS-PANEL" style="display:none">
+          <div id="T-ASSIGN-LIST"><div class="ld"><div class="sp"></div>&nbsp;Loading assignments...</div></div>
+        </div>
+      </div>
+
+      <!-- Create assignment form -->
+      <div class="tcard" id="T-ASSIGN-FORM" style="display:none">
+        <div class="tcard-title">New Assignment</div>
+        <input class="tinp" type="text" id="T-ASSIGN-TITLE" placeholder="Assignment title (e.g. Chapter 3 Summary)">
+        <textarea class="tinp" id="T-ASSIGN-CONTENT" placeholder="Paste the text or lesson content students will summarize..."></textarea>
+        <label class="tchk"><input type="checkbox" id="T-ASSIGN-HW"> Mark as homework (your students must complete it, and you can see their work)</label>
+        <div class="trow">
+          <button class="btn bp" id="T-ASSIGN-SUBMIT">Create Assignment</button>
+          <button class="btn bg" id="T-ASSIGN-CANCEL">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STUDENT ASSIGNMENTS TAB CONTENT (injected into SH) -->
+
 <div class="ascreen" id="SA">
   <div class="acard">
     <div class="alogo">Summar<span>AI</span></div>
@@ -609,6 +761,7 @@ body.light #LSAMPLE-BTN{border-color:rgba(90,122,16,.3);color:#5a7a10}
       <button id="FWBTN" type="button" style="background:none;border:none;color:#888899;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:0">Forgot password?</button>
     </div>
     <label class="achk"><input type="checkbox" id="ANEW"> New user? Create account</label>
+    <label class="achk" id="TEACHER-CHK-WRAP" style="display:none"><input type="checkbox" id="ATEACHER"> I am a teacher</label>
     <button class="btn bp" id="AGO" style="width:100%;justify-content:center;font-size:15px;padding:13px">Continue</button>
     <div style="display:flex;align-items:center;gap:10px;margin:16px 0">
       <div style="flex:1;height:1px;background:#2a2a35"></div>
@@ -633,8 +786,12 @@ body.light #LSAMPLE-BTN{border-color:rgba(90,122,16,.3);color:#5a7a10}
         <button class="btn bg" id="HOUT" style="padding:7px 14px;font-size:13px">Sign Out</button>
       </div>
     </div>
-    <div class="ct" style="margin-bottom:4px">Your Sessions</div>
-    <div class="cs">Tap a session to review, or start a new one.</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <button class="tab on" id="H-TAB-SESSIONS" style="font-size:13px;padding:6px 14px">My Sessions</button>
+      <button class="tab" id="H-TAB-ASSIGNS" style="font-size:13px;padding:6px 14px">Assignments</button>
+      <button class="tab" id="H-TAB-CLASSES" style="font-size:13px;padding:6px 14px">My Classes</button>
+    </div>
+    <div class="cs" id="H-SUB">Tap a session to review, or start a new one.</div>
 
     <div class="streak-bar" id="STREAK-BAR" style="display:none">
       <div class="streak-fire">&#128293;</div>
@@ -657,6 +814,22 @@ body.light #LSAMPLE-BTN{border-color:rgba(90,122,16,.3);color:#5a7a10}
     </div>
 
     <div id="HL" style="margin-top:20px"></div>
+    <div id="HL-ASSIGNS" style="display:none;margin-top:20px">
+      <div id="HL-ASSIGN-LIST"><div class="ld"><div class="sp"></div>&nbsp;Loading assignments...</div></div>
+    </div>
+    <div id="HL-CLASSES" style="display:none;margin-top:20px">
+      <div class="tcard" style="margin-bottom:14px">
+        <div class="tcard-title">Join a Classroom</div>
+        <div class="tcard-sub">Enter the code your teacher gave you.</div>
+        <div style="display:flex;gap:10px">
+          <input class="tinp" style="margin-bottom:0;flex:1" type="text" id="JOIN-CODE" placeholder="Enter class code (e.g. ABC123)" maxlength="6" style="text-transform:uppercase">
+          <button class="btn bp" id="JOIN-BTN" style="white-space:nowrap">Join Class</button>
+        </div>
+        <div id="JOIN-ERR" class="err" style="display:none;margin-top:8px"></div>
+        <div id="JOIN-OK" style="display:none;background:rgba(96,240,168,.1);border:1px solid rgba(96,240,168,.3);border-radius:8px;padding:10px;color:var(--ok);font-size:13px;margin-top:8px"></div>
+      </div>
+      <div id="HL-CLASS-LIST"><div class="ld"><div class="sp"></div>&nbsp;Loading classes...</div></div>
+    </div>
   </div>
 </div>
 
@@ -833,20 +1006,33 @@ async function initAuth() {
     var type = params.get('type');
     if (token && type === 'recovery') { showResetForm(token); return; }
     if (token && type !== 'recovery') {
-      // Google or other OAuth login
       var userRes = await fetch('https://rmxckkpteblnvjdgugcm.supabase.co/auth/v1/user', {headers:{'apikey':'sb_publishable_BjaS3DNgdawXHXwU9oy0sQ_LFNrSnRb','Authorization':'Bearer '+token}});
       if (userRes.ok) {
         var userData = await userRes.json();
         utoken=token; uid=userData.id; uemail=userData.email;
         try{localStorage.setItem('sat',utoken);localStorage.setItem('suid',uid);localStorage.setItem('sem',uemail);}catch(e){}
         window.location.hash = '';
-        g('HEM').textContent=uemail; screen('H'); loadHistory(); return;
+        await routeByRole();
+        return;
       }
     }
   }
   try { utoken=localStorage.getItem('sat'); uid=localStorage.getItem('suid'); uemail=localStorage.getItem('sem'); } catch(e){}
-  if (utoken && uid) { g('HEM').textContent=uemail||''; screen('H'); loadHistory(); }
+  if (utoken && uid) { await routeByRole(); }
   else screen('L');
+}
+
+async function routeByRole() {
+  await loadProfile();
+  if (isTeacher) {
+    g('TEM').textContent = uemail || '';
+    screen('T');
+    loadTeacherDashboard();
+  } else {
+    g('HEM').textContent = uemail || '';
+    screen('H');
+    loadHistory();
+  }
 }
 
 function showResetForm(token) {
@@ -868,6 +1054,10 @@ function showResetForm(token) {
   });
 }
 
+g('ANEW').addEventListener('change', function() {
+  g('TEACHER-CHK-WRAP').style.display = this.checked ? 'flex' : 'none';
+  if (!this.checked) g('ATEACHER').checked = false;
+});
 g('AGO').addEventListener('touchend', function(e) { e.preventDefault(); doAuth(); });
 g('AGO').addEventListener('click', function() { doAuth(); });
 async function doAuth() {
@@ -878,6 +1068,7 @@ async function doAuth() {
   g('AGO').disabled=true; g('AGO').textContent='Please wait...';
   try {
     if (isNew) {
+      var isTeacherSignup = g('ATEACHER') && g('ATEACHER').checked;
       var r=await sbReq('/auth/v1/signup','POST',{email:email,password:pass});
       if (r.ok) {
         g('ANEW').checked=false;
@@ -885,7 +1076,9 @@ async function doAuth() {
         if (r2.ok && r2.data && r2.data.access_token) {
           utoken=r2.data.access_token; uid=r2.data.user.id; uemail=r2.data.user.email;
           try{localStorage.setItem('sat',utoken);localStorage.setItem('suid',uid);localStorage.setItem('sem',uemail);}catch(e){}
-          g('HEM').textContent=uemail; screen('H'); loadHistory();
+          await sbReq('/rest/v1/profiles', 'POST', {id: uid, is_teacher: isTeacherSignup});
+          isTeacher = isTeacherSignup;
+          await routeByRole();
         } else { aok.textContent='Account created! You can now sign in.'; aok.style.display='block'; }
       }
       else { ae.textContent=(r.data&&r.data.msg)||(r.data&&r.data.error_description)||'Sign up failed.'; ae.style.display='block'; }
@@ -1025,6 +1218,9 @@ function viewSession(s) {
 async function saveSession(fb, qScore) {
   if (!uid) return;
   var pay={user_id:uid,source_text:src.substring(0,5000),summary:g('USUM').value.trim(),feedback_score:fb.score,feedback_label:fb.scoreLabel,feedback_positive:fb.positive,feedback_improve:fb.improve,feedback_missing:fb.missing,feedback_tip:fb.tip,quiz_score:qScore!=null?qScore:null};
+  if (currentAssignmentId) pay.assignment_id = currentAssignmentId;
+  var spent = Math.round((Date.now() - sessionStart) / 1000);
+  pay.time_spent = spent;
   if (sessionId) { await sbReq('/rest/v1/sessions?id=eq.'+sessionId,'PATCH',pay); }
   else { var r=await sbReq('/rest/v1/sessions','POST',pay); if(r.data&&r.data[0]) sessionId=r.data[0].id; }
 }
@@ -1216,6 +1412,299 @@ function toggleTheme() {
   if (el) {
     el.addEventListener('click', toggleTheme);
     if (isLight) el.innerHTML = '&#9790;';
+  }
+});
+
+
+// ── Teacher/Classroom Logic ─────────────────────────────────────────────────
+
+var currentClassId = null;
+var isTeacher = false;
+var sessionStart = Date.now();
+
+// Update screen function to include teacher screen
+function screen(s) {
+  g('SL').style.display = s==='L' ? 'block' : 'none';
+  g('SA').style.display = s==='A' ? 'flex' : 'none';
+  g('SH').style.display = s==='H' ? 'block' : 'none';
+  g('SM').style.display = s==='M' ? 'block' : 'none';
+  g('ST').style.display = s==='T' ? 'block' : 'none';
+  window.scrollTo(0,0);
+}
+
+async function loadProfile() {
+  var res = await sbReq('/rest/v1/profiles?id=eq.'+uid+'&select=*', 'GET');
+  if (res.ok && res.data && res.data[0]) {
+    isTeacher = res.data[0].is_teacher || false;
+  }
+  return isTeacher;
+}
+
+async function saveProfile(teacherFlag) {
+  // Upsert profile
+  await sbReq('/rest/v1/profiles', 'POST', {id: uid, is_teacher: teacherFlag});
+}
+
+// Override doAuth to also save profile on signup
+var _origDoAuth = doAuth;
+
+// Teacher dashboard functions
+async function loadTeacherDashboard() {
+  g('TEM').textContent = uemail || '';
+  var res = await sbReq('/rest/v1/classrooms?teacher_id=eq.'+uid+'&select=*&order=created_at.desc', 'GET');
+  var list = g('T-CLASS-LIST');
+  if (!res.ok || !res.data || !res.data.length) {
+    list.innerHTML = '<div style="color:var(--mut);font-size:14px;padding:8px 0">No classrooms yet. Create one to get started!</div>';
+    return;
+  }
+  list.innerHTML = '';
+  res.data.forEach(function(cls) {
+    var d = document.createElement('div');
+    d.className = 'class-card';
+    d.innerHTML = '<div class="class-code">'+cls.code+'</div><div class="class-name">'+cls.name+'</div><div class="class-meta">'+new Date(cls.created_at).toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric'})+'</div>';
+    d.addEventListener('click', function() { openClassDetail(cls); });
+    list.appendChild(d);
+  });
+}
+
+async function openClassDetail(cls) {
+  currentClassId = cls.id;
+  g('T-OVERVIEW').style.display = 'none';
+  g('T-CLASS-DETAIL').style.display = 'block';
+  g('T-CLASS-TITLE').textContent = cls.name;
+  g('T-CLASS-CODE').textContent = cls.code;
+  loadClassStudents(cls.id);
+  loadClassAssignments(cls.id);
+  loadClassStats(cls.id);
+}
+
+async function loadClassStats(classId) {
+  var members = await sbReq('/rest/v1/classroom_members?classroom_id=eq.'+classId+'&select=*', 'GET');
+  var assigns = await sbReq('/rest/v1/assignments?classroom_id=eq.'+classId+'&select=*', 'GET');
+  var memberIds = members.data ? members.data.map(function(m){return m.student_id;}) : [];
+  g('T-STAT-STUDENTS').textContent = memberIds.length;
+  g('T-STAT-ASSIGNS').textContent = assigns.data ? assigns.data.length : 0;
+  if (memberIds.length > 0) {
+    var sessRes = await sbReq('/rest/v1/sessions?user_id=in.('+memberIds.join(',')+')'+'&assignment_id=not.is.null&select=feedback_score,time_spent', 'GET');
+    if (sessRes.ok && sessRes.data && sessRes.data.length) {
+      var scores = sessRes.data.filter(function(s){return s.feedback_score;}).map(function(s){return s.feedback_score;});
+      var avg = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : null;
+      g('T-STAT-AVG').textContent = avg ? avg+'/100' : '-';
+      var times = sessRes.data.filter(function(s){return s.time_spent;}).map(function(s){return s.time_spent;});
+      var avgTime = times.length ? Math.round(times.reduce(function(a,b){return a+b;},0)/times.length) : null;
+      g('T-STAT-TIME').textContent = avgTime ? Math.floor(avgTime/60)+'m '+( avgTime%60)+'s' : '-';
+    }
+  }
+}
+
+async function loadClassStudents(classId) {
+  var res = await sbReq('/rest/v1/classroom_members?classroom_id=eq.'+classId+'&select=student_id,joined_at', 'GET');
+  var list = g('T-STUDENT-LIST');
+  if (!res.ok || !res.data || !res.data.length) { list.innerHTML = '<div style="color:var(--mut);font-size:14px">No students yet. Share the class code!</div>'; return; }
+  list.innerHTML = '';
+  for (var i=0; i<res.data.length; i++) {
+    var m = res.data[i];
+    var profRes = await sbReq('/rest/v1/profiles?id=eq.'+m.student_id+'&select=*', 'GET');
+    var sessRes = await sbReq('/rest/v1/sessions?user_id=eq.'+m.student_id+'&assignment_id=not.is.null&select=feedback_score,quiz_score,time_spent,created_at&order=created_at.desc', 'GET');
+    var name = (profRes.data && profRes.data[0] && profRes.data[0].full_name) || 'Student';
+    var initials = name.split(' ').map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();
+    var sessions = sessRes.data || [];
+    var scores = sessions.filter(function(s){return s.feedback_score;}).map(function(s){return s.feedback_score;});
+    var avgScore = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : null;
+    var totalTime = sessions.filter(function(s){return s.time_spent;}).reduce(function(acc,s){return acc+(s.time_spent||0);},0);
+    var clr = avgScore >= 80 ? '#60f0a8' : avgScore >= 60 ? '#c8f060' : avgScore ? '#f06060' : 'var(--mut)';
+    var d = document.createElement('div');
+    d.className = 'student-row';
+    d.innerHTML = '<div class="student-av" style="color:'+clr+'">'+initials+'</div><div class="student-info"><div class="student-name">'+name+'</div><div class="student-meta">'+sessions.length+' sessions &middot; '+(totalTime>0?Math.floor(totalTime/60)+'m total':'no time data')+'</div></div><div class="student-score" style="color:'+clr+'">'+(avgScore||'-')+'</div>';
+    list.appendChild(d);
+  }
+}
+
+async function loadClassAssignments(classId) {
+  var res = await sbReq('/rest/v1/assignments?classroom_id=eq.'+classId+'&select=*&order=created_at.desc', 'GET');
+  var list = g('T-ASSIGN-LIST');
+  if (!res.ok || !res.data || !res.data.length) { list.innerHTML = '<div style="color:var(--mut);font-size:14px">No assignments yet.</div>'; return; }
+  list.innerHTML = '';
+  res.data.forEach(function(a) {
+    var d = document.createElement('div');
+    d.className = 'assign-row';
+    var badge = a.is_homework ? '<span class="assign-hw hw">Homework</span>' : '<span class="assign-hw opt">Optional</span>';
+    d.innerHTML = badge+'<span class="assign-title">'+a.title+'</span><span class="assign-meta">'+new Date(a.created_at).toLocaleDateString('en-CA',{month:'short',day:'numeric'})+'</span>';
+    list.appendChild(d);
+  });
+}
+
+// Student classroom functions
+async function loadStudentAssignments() {
+  var classRes = await sbReq('/rest/v1/classroom_members?student_id=eq.'+uid+'&select=classroom_id', 'GET');
+  var list = g('HL-ASSIGN-LIST');
+  if (!classRes.ok || !classRes.data || !classRes.data.length) {
+    list.innerHTML = '<div style="color:var(--mut);font-size:14px;text-align:center;padding:32px">You have not joined any classrooms yet. Ask your teacher for a class code!</div>';
+    return;
+  }
+  var classIds = classRes.data.map(function(c){return c.classroom_id;});
+  var assignRes = await sbReq('/rest/v1/assignments?classroom_id=in.('+classIds.join(',')+')'+'&select=*&order=created_at.desc', 'GET');
+  if (!assignRes.ok || !assignRes.data || !assignRes.data.length) {
+    list.innerHTML = '<div style="color:var(--mut);font-size:14px;text-align:center;padding:32px">No assignments yet.</div>';
+    return;
+  }
+  var sessRes = await sbReq('/rest/v1/sessions?user_id=eq.'+uid+'&assignment_id=not.is.null&select=assignment_id,feedback_score', 'GET');
+  var doneSessions = {};
+  if (sessRes.data) sessRes.data.forEach(function(s){doneSessions[s.assignment_id]=s.feedback_score;});
+  list.innerHTML = '';
+  assignRes.data.forEach(function(a) {
+    var done = doneSessions[a.id];
+    var badge = a.is_homework ? '<span class="assign-badge hw">Homework</span>' : '<span class="assign-badge opt">Optional</span>';
+    var doneBadge = done ? '<span class="assign-badge done">Done - '+done+'/100</span>' : '';
+    var d = document.createElement('div');
+    d.className = 'assign-item';
+    d.innerHTML = '<div class="assign-item-title">'+a.title+'</div><div class="assign-item-meta">'+badge+doneBadge+'</div>';
+    d.addEventListener('click', function() {
+      src = a.content;
+      g('PIN').value = src;
+      g('CC').textContent = src.length;
+      g('B1').disabled = false;
+      g('SPREV').textContent = src.substring(0,600)+(src.length>600?'...':'');
+      g('USUM').value = ''; g('SC').textContent = '0'; g('BFB').disabled = true;
+      sessionId = null;
+      currentAssignmentId = a.id;
+      screen('M'); goPanel(2);
+    });
+    list.appendChild(d);
+  });
+}
+
+async function loadStudentClasses() {
+  var res = await sbReq('/rest/v1/classroom_members?student_id=eq.'+uid+'&select=classroom_id', 'GET');
+  var list = g('HL-CLASS-LIST');
+  if (!res.ok || !res.data || !res.data.length) {
+    list.innerHTML = '<div style="color:var(--mut);font-size:14px;padding:8px 0">You have not joined any classrooms yet.</div>';
+    return;
+  }
+  var classIds = res.data.map(function(c){return c.classroom_id;});
+  var classRes = await sbReq('/rest/v1/classrooms?id=in.('+classIds.join(',')+')'+'&select=*', 'GET');
+  list.innerHTML = '';
+  if (!classRes.data || !classRes.data.length) { list.innerHTML = '<div style="color:var(--mut);font-size:14px">No classes found.</div>'; return; }
+  classRes.data.forEach(function(cls) {
+    var d = document.createElement('div');
+    d.className = 'class-card';
+    d.style.cursor = 'default';
+    d.innerHTML = '<div class="class-code">'+cls.code+'</div><div class="class-name">'+cls.name+'</div>';
+    list.appendChild(d);
+  });
+}
+
+var currentAssignmentId = null;
+
+// Wire up teacher UI
+g('T-NEW-CLASS-BTN').addEventListener('click', function() {
+  g('T-CREATE-FORM').style.display = 'block';
+  g('T-NEW-CLASS-BTN').style.display = 'none';
+});
+g('T-CREATE-CANCEL').addEventListener('click', function() {
+  g('T-CREATE-FORM').style.display = 'none';
+  g('T-NEW-CLASS-BTN').style.display = 'inline-flex';
+});
+g('T-CREATE-SUBMIT').addEventListener('click', async function() {
+  var name = g('T-CLASS-NAME').value.trim();
+  if (!name) return;
+  this.disabled = true; this.textContent = 'Creating...';
+  var code = Math.random().toString(36).substring(2,8).toUpperCase();
+  var res = await sbReq('/rest/v1/classrooms', 'POST', {teacher_id: uid, name: name, code: code});
+  this.disabled = false; this.textContent = 'Create Classroom';
+  g('T-CREATE-FORM').style.display = 'none';
+  g('T-NEW-CLASS-BTN').style.display = 'inline-flex';
+  g('T-CLASS-NAME').value = '';
+  loadTeacherDashboard();
+});
+g('T-BACK-BTN').addEventListener('click', function() {
+  g('T-OVERVIEW').style.display = 'block';
+  g('T-CLASS-DETAIL').style.display = 'none';
+  g('T-ASSIGN-FORM').style.display = 'none';
+  currentClassId = null;
+});
+g('T-NEW-ASSIGN-BTN').addEventListener('click', function() {
+  g('T-ASSIGN-FORM').style.display = 'block';
+});
+g('T-ASSIGN-CANCEL').addEventListener('click', function() {
+  g('T-ASSIGN-FORM').style.display = 'none';
+});
+g('T-ASSIGN-SUBMIT').addEventListener('click', async function() {
+  var title = g('T-ASSIGN-TITLE').value.trim();
+  var content = g('T-ASSIGN-CONTENT').value.trim();
+  var isHw = g('T-ASSIGN-HW').checked;
+  if (!title || !content) { alert('Please fill in both fields.'); return; }
+  this.disabled = true; this.textContent = 'Creating...';
+  await sbReq('/rest/v1/assignments', 'POST', {classroom_id: currentClassId, title: title, content: content, is_homework: isHw});
+  this.disabled = false; this.textContent = 'Create Assignment';
+  g('T-ASSIGN-FORM').style.display = 'none';
+  g('T-ASSIGN-TITLE').value = ''; g('T-ASSIGN-CONTENT').value = '';
+  loadClassAssignments(currentClassId);
+  loadClassStats(currentClassId);
+});
+g('T-TAB-STUDENTS').addEventListener('click', function() {
+  this.classList.add('on'); g('T-TAB-ASSIGNS').classList.remove('on');
+  g('T-STUDENTS-PANEL').style.display = 'block'; g('T-ASSIGNS-PANEL').style.display = 'none';
+});
+g('T-TAB-ASSIGNS').addEventListener('click', function() {
+  this.classList.add('on'); g('T-TAB-STUDENTS').classList.remove('on');
+  g('T-ASSIGNS-PANEL').style.display = 'block'; g('T-STUDENTS-PANEL').style.display = 'none';
+});
+g('TOUT').addEventListener('click', signOut);
+
+// Student tabs
+g('H-TAB-SESSIONS').addEventListener('click', function() {
+  this.classList.add('on'); g('H-TAB-ASSIGNS').classList.remove('on'); g('H-TAB-CLASSES').classList.remove('on');
+  g('HL').style.display = 'block'; g('HL-ASSIGNS').style.display = 'none'; g('HL-CLASSES').style.display = 'none';
+  g('H-SUB').textContent = 'Tap a session to review, or start a new one.';
+});
+g('H-TAB-ASSIGNS').addEventListener('click', function() {
+  this.classList.add('on'); g('H-TAB-SESSIONS').classList.remove('on'); g('H-TAB-CLASSES').classList.remove('on');
+  g('HL').style.display = 'none'; g('HL-ASSIGNS').style.display = 'block'; g('HL-CLASSES').style.display = 'none';
+  g('H-SUB').textContent = 'Assignments from your teachers.';
+  loadStudentAssignments();
+});
+g('H-TAB-CLASSES').addEventListener('click', function() {
+  this.classList.add('on'); g('H-TAB-SESSIONS').classList.remove('on'); g('H-TAB-ASSIGNS').classList.remove('on');
+  g('HL').style.display = 'none'; g('HL-ASSIGNS').style.display = 'none'; g('HL-CLASSES').style.display = 'block';
+  g('H-SUB').textContent = 'Your classrooms.';
+  loadStudentClasses();
+});
+
+// Join class
+g('JOIN-BTN').addEventListener('click', async function() {
+  var code = g('JOIN-CODE').value.trim().toUpperCase();
+  var err = g('JOIN-ERR'); var ok = g('JOIN-OK');
+  err.style.display='none'; ok.style.display='none';
+  if (!code || code.length < 4) { err.textContent='Please enter a valid class code.'; err.style.display='block'; return; }
+  this.disabled=true; this.textContent='Joining...';
+  var classRes = await sbReq('/rest/v1/classrooms?code=eq.'+code+'&select=*', 'GET');
+  if (!classRes.ok || !classRes.data || !classRes.data.length) {
+    err.textContent='Class code not found. Check with your teacher.'; err.style.display='block';
+    this.disabled=false; this.textContent='Join Class'; return;
+  }
+  var cls = classRes.data[0];
+  var joinRes = await sbReq('/rest/v1/classroom_members', 'POST', {classroom_id: cls.id, student_id: uid});
+  if (joinRes.ok || joinRes.status === 409) {
+    ok.textContent='Joined "'+cls.name+'" successfully!'; ok.style.display='block';
+    g('JOIN-CODE').value = '';
+    loadStudentClasses();
+  } else {
+    err.textContent='Could not join class. Try again.'; err.style.display='block';
+  }
+  this.disabled=false; this.textContent='Join Class';
+});
+
+// Add theme button for teacher screen
+g('THEME-BTN3').addEventListener('click', toggleTheme);
+if (isLight) { var el3 = g('THEME-BTN3'); if(el3) el3.innerHTML = '&#9790;'; }
+
+// Track time spent - save when leaving a session
+window.addEventListener('beforeunload', function() {
+  if (sessionId) {
+    var spent = Math.round((Date.now() - sessionStart) / 1000);
+    navigator.sendBeacon && navigator.sendBeacon('', '');
+    sbReq('/rest/v1/sessions?id=eq.'+sessionId, 'PATCH', {time_spent: spent});
   }
 });
 
